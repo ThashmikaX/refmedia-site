@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Gallery from "@/components/Gallery";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
@@ -7,7 +8,9 @@ export default function Home() {
       <div className="h-[2px] w-full bg-main-gradient absolute top-0 z-50"></div>
       <Navbar></Navbar>
       <section className="w-full" id="home"></section>
-      <div className="min-h-screen bg-[url('/assets/Slideshow.jpg')] bg-cover top-0"></div>
+      <div className="min-h-screen">
+        <Hero />
+      </div>
       <div className="min-h-screen bg-cover">
         {/* <Welcome />
         <Theme />
