@@ -10,6 +10,13 @@ import row3Image1 from "../../public/assets/galleryComponentAssests/row-3-1.png"
 import row3Image2 from "../../public/assets/galleryComponentAssests/row-3-2.png";
 import row3Image3 from "../../public/assets/galleryComponentAssests/row-3-3.png";
 
+import chalakaThisaruwan from "../../public/assets/teamMembers/chalakaThisaruwan.png";
+import chamikaRohan from "../../public/assets/teamMembers/chamikaRohan.png";
+import hiranSenevirathna from "../../public/assets/teamMembers/hiranSenevirathna.png";
+import kasunDilshan from "../../public/assets/teamMembers/kasunDilshan.png";
+import pasanSilva from "../../public/assets/teamMembers/pasanSilva.png";
+import vidhuraPolgolla from "../../public/assets/teamMembers/vidhuraPolgolla.png";
+
 export const row1: StaticImageData[] = [row1Image1, row1Image2, row1Image3];
 export const row2: StaticImageData[] = [
   row2Image1,
@@ -18,3 +25,41 @@ export const row2: StaticImageData[] = [
   row2Image4,
 ];
 export const row3: StaticImageData[] = [row3Image1, row3Image2, row3Image3];
+
+type teamMember = {
+  avatar: StaticImageData;
+  name: string;
+  title: string;
+};
+export const teamMembers: teamMember[] = [
+  {
+    avatar: hiranSenevirathna,
+    name: "Hiran Senivirathna",
+    title: "President",
+  },
+  {
+    avatar: chamikaRohan,
+    name: "Chamilka Rohan",
+    title: "Photography & Videography Lead",
+  },
+  {
+    avatar: pasanSilva,
+    name: "Pasan Silva",
+    title: "Vice President",
+  },
+  {
+    avatar: chalakaThisaruwan,
+    name: "Chalaka Thisaruwan",
+    title: "Secretary",
+  },
+  {
+    avatar: kasunDilshan,
+    name: "Kasun Dilshan",
+    title: "Junior Treasurer",
+  },
+  {
+    avatar: vidhuraPolgolla,
+    name: "Vidhura Polgolla",
+    title: "Editor",
+  },
+];
