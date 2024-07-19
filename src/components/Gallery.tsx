@@ -6,7 +6,7 @@ const Gallery = () => {
   return (
     <div className="my-[96px] sm:my-[128px] flex flex-col gap-[40px] w-full sm:gap-[64px]">
       <div className="mx-[16px]  sm:m-0 text-sectionTitle h-[35px] sm:px-[100px] text-[24px] font-[500px]">
-        <p>Gallery</p>
+        <p className="font-outfit.normal">Gallery</p>
         <div className="border-b-2 border-border " />
       </div>
       <HorizontalScrollCarousel />
