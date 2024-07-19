@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Gallery from "@/components/Gallery";
 import Hero from "@/components/Hero";
+import TheTeamBehind from "@/components/TheTeamBehind";
 
 export default function Home() {
   return (
@@ -26,8 +27,11 @@ export default function Home() {
       {/*Gallery section
       to test animation h-[300vh] was added
       */}
-      <section id="gallery" className="h-[300vh]">
+      <section id="gallery">
         <Gallery />
+      </section>
+      <section id="theTeamBehind">
+        <TheTeamBehind />
       </section>
     </main>
   );
