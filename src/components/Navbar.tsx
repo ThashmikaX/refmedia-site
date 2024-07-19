@@ -82,7 +82,7 @@ function Navbar() {
 
   return (
     <nav
-      className={"sticky top-0 z-50 flex justify-center "}
+      className={"sticky top-0 z-50 flex justify-center"}
     >
       <div className="absolute w-full backdrop-blur-lg bg-black bg-opacity-50 lg:rounded-lg lg:m-8 lg:w-[95%]">
         <div className="container mx-auto px-4 relative lg:text-sm">
