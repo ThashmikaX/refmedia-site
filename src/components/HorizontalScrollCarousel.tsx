@@ -28,7 +28,7 @@ export default function HorizontalScrollCarousel() {
                 src={imageSrc}
                 width={523}
                 height={234}
-                quality={75}
+                quality={100}
                 sizes="(max-width: 425px) 145.99px , 522.99px"
                 alt="image"
                 placeholder="blur"
@@ -46,7 +46,7 @@ export default function HorizontalScrollCarousel() {
                 className="w-[145.99px] h-[97.1px] sm:h-[233.67px] sm:w-[390.87px] rounded-[5.51px]"
                 src={imageSrc}
                 width={391}
-                quality={75}
+                quality={100}
                 height={234}
                 sizes="(max-width: 425px) 145.99px , 390.87px"
                 alt="image"
@@ -66,7 +66,7 @@ export default function HorizontalScrollCarousel() {
                 src={imageSrc}
                 width={523}
                 height={234}
-                quality={75}
+                quality={100}
                 sizes="(max-width: 425px) 145.99px , 522.99px"
                 alt="image"
                 placeholder="blur"
