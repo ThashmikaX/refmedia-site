@@ -18,6 +18,11 @@ const config: Config = {
       },
       screens: {
         sm: "425px",
+        // "2xlc": { max: "1535px" }, // => @media (max-width: 1535px) { ... }
+        xlc: { max: "1279px" }, // => @media (max-width: 1279px) { ... }
+        lgc: { max: "1023px" }, // => @media (max-width: 1023px) { ... }
+        mdc: { max: "767px" }, // => @media (max-width: 767px) { ... }
+        smc: { max: "639px" }, // => @media (max-width: 639px) { ... }
       },
       colors: {
         sectionTitle: "rgba(0, 0, 0, 0.5)",

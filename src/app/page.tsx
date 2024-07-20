@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Gallery from "@/components/Gallery";
 import Hero from "@/components/Hero";
 import TheTeamBehind from "@/components/TheTeamBehind";
+import Heading from "@/components/Heading";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <div className="min-h-screen">
         <Hero />
       </div>
+      <Heading />
       <div className="min-h-screen bg-cover">
         {/* <Welcome />
         <Theme />
