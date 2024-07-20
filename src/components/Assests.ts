@@ -18,6 +18,7 @@ import hiranSenevirathna from "../../public/assets/teamMembers/hiranSenevirathna
 import kasunDilshan from "../../public/assets/teamMembers/kasunDilshan.png";
 import pasanSilva from "../../public/assets/teamMembers/pasanSilva.png";
 import vidhuraPolgolla from "../../public/assets/teamMembers/vidhuraPolgolla.png";
+import { IconProps, Icons } from "./ui/Icons";
 
 export const row1: StaticImageData[] = [
   row1Image1,
@@ -73,5 +74,69 @@ export const teamMembers: teamMember[] = [
     avatar: vidhuraPolgolla,
     name: "Vidhura Polgolla",
     title: "Editor",
+  },
+];
+
+export type contact = {
+  title: string;
+  Icon: (props: IconProps) => JSX.Element;
+  description: string;
+  details: string;
+};
+
+export const contacts: contact[] = [
+  {
+    title: "Email",
+    description: "Our friendly team is here to help.",
+    details: "contactrefmedia@gmail.com",
+    Icon: Icons.mail,
+  },
+  {
+    title: "Phone",
+    description: "Mon-Fri from 8am to 5pm.",
+    details: "+94 41 22 22222",
+    Icon: Icons.phone,
+  },
+  {
+    title: "Address",
+    description: "Come say hello at our faculty.",
+    details:
+      "Engineering Faculty, University of Ruhuna, Hapugala, Galle, Sri Lanka",
+    Icon: Icons.map,
+  },
+];
+
+export type socialLink = {
+  Icon: (props: IconProps) => JSX.Element;
+  linkText: string;
+  to: string;
+
+};
+
+export const socialLinks: socialLink[] = [
+  {
+    Icon: Icons.facebook,
+    linkText: "Facebook",
+    to: "/fblink",
+  },
+  {
+    Icon: Icons.instergram,
+    linkText: "Instergram",
+    to: "/instalink",
+  },
+  {
+    Icon: Icons.facebook,
+    linkText: "Facebook",
+    to: "/fblink",
+  },
+  {
+    Icon: Icons.youtube,
+    linkText: "Youtube",
+    to: "/ytLink",
+  },
+  {
+    Icon: Icons.linkedIn,
+    linkText: "LinkedIn",
+    to: "/linkedinlink",
   },
 ];
