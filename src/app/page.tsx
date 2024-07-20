@@ -30,6 +30,12 @@ export default function Home() {
       <section id="theTeamBehind">
         <TheTeamBehind />
       </section>
+      {/* <section id="parallexText" className="w-full">
+        <ParallaxText 
+        line1="Bridging Innovation and Communication – Explore, Engage, Elevate"
+        line2="Capturing Excellence, Inspiring Innovation - We are REF Media"
+        />
+      </section> */}
     </main>
   );
 }
