@@ -110,7 +110,6 @@ export type socialLink = {
   Icon: (props: IconProps) => JSX.Element;
   linkText: string;
   to: string;
-
 };
 
 export const socialLinks: socialLink[] = [
@@ -125,9 +124,9 @@ export const socialLinks: socialLink[] = [
     to: "/instalink",
   },
   {
-    Icon: Icons.facebook,
-    linkText: "Facebook",
-    to: "/fblink",
+    Icon: Icons.tiktok,
+    linkText: "Tiktok",
+    to: "/tiktokLink",
   },
   {
     Icon: Icons.youtube,
