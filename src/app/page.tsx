@@ -1,7 +1,10 @@
+"use client";
 import Navbar from "@/components/Navbar";
 import Gallery from "@/components/Gallery";
 import Hero from "@/components/Hero";
 import TheTeamBehind from "@/components/TheTeamBehind";
+import Heading from "@/components/Heading";
+import About from "@/components/About";
 import ContactUs from "@/components/ContactUs";
 
 export default function Home() {
@@ -13,6 +16,8 @@ export default function Home() {
       <div className="min-h-screen">
         <Hero />
       </div>
+      <Heading />
+
       <div className="min-h-screen bg-cover">
         {/* <Welcome />
         <Theme />
@@ -30,6 +35,9 @@ export default function Home() {
       */}
       <section id="gallery">
         <Gallery />
+      </section>
+      <section id="about">
+        <About />
       </section>
       <section id="theTeamBehind">
         <TheTeamBehind />

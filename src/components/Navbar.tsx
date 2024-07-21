@@ -1,32 +1,35 @@
-"use client"
-import React, { useState, useEffect } from "react"
-import clsx from "clsx"
-import Link from "next/link"
+"use client";
+import React, { useState, useEffect } from "react";
+import clsx from "clsx";
+import Link from "next/link";
 
 const navItems = [
   { label: "Home", href: "home" },
   { label: "Gallery", href: "gallery" },
   { label: "About", href: "about" },
-  { label: "Contact", href: "contact" }
-]
+  { label: "Contact", href: "contact" },
+];
 
 function Navbar() {
   const scrolltoHash = function (element_id: string) {
-    const element = document.getElementById(element_id)
+    const element = document.getElementById(element_id);
 
     if (!element) {
-      globalThis.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+      globalThis.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     }
 
     element?.scrollIntoView({
       behavior: "smooth",
       block: "center",
-      inline: "nearest"
-    })
-  }
+      inline: "nearest",
+    });
+  };
 
-  const elementIsVisibleInViewport = (el: HTMLElement | null, partiallyVisible = true) => {
-    if(!el) return false
+  const elementIsVisibleInViewport = (
+    el: HTMLElement | null,
+    partiallyVisible = true
+  ) => {
+    if (!el) return false;
     const { top, left, bottom, right } = el.getBoundingClientRect();
     const { innerHeight, innerWidth } = window;
     return partiallyVisible
@@ -36,54 +39,50 @@ function Navbar() {
       : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
   };
 
-    
   const setActiveLinks = () => {
-
     if (elementIsVisibleInViewport(document.getElementById("home"))) {
-        setActiveLink("Home")
-    } 
+      setActiveLink("Home");
+    }
     if (elementIsVisibleInViewport(document.getElementById("gallery"))) {
-        setActiveLink("Gallery")
-    } 
+      setActiveLink("Gallery");
+    }
     if (elementIsVisibleInViewport(document.getElementById("about"))) {
-        setActiveLink("About")
-    } 
+      setActiveLink("About");
+    }
     if (elementIsVisibleInViewport(document.getElementById("contact"))) {
-        setActiveLink("Contact")
-    } 
-  }
+      setActiveLink("Contact");
+    }
+  };
 
-  const [activeLink, setActiveLink] = useState("Home")
+  const [activeLink, setActiveLink] = useState("Home");
 
-  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false)
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
 
   const toggleNavbar = () => {
-    setMobileDrawerOpen(!mobileDrawerOpen)
-  }
+    setMobileDrawerOpen(!mobileDrawerOpen);
+  };
 
-  const [hasScrolled, setHasScrolled] = useState(false)
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
-        setHasScrolled(true)
+        setHasScrolled(true);
       } else {
-        setHasScrolled(false)
+        setHasScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    window.addEventListener("scroll", setActiveLinks)
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", setActiveLinks);
     // Cleanup event listener on component unmount
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <nav
-      className={"sticky top-0 z-50 flex justify-center"}
-    >
+    <nav className={"sticky top-0 z-50 flex justify-center"}>
       <div className="absolute w-full backdrop-blur-lg bg-black bg-opacity-50 lg:rounded-lg lg:m-8 lg:w-[95%]">
         <div className="container mx-auto px-4 relative lg:text-sm">
           <div className="py-3 md:py-4 flex justify-between items-center">
@@ -107,8 +106,8 @@ function Navbar() {
                   <div
                     className="hover:cursor-pointer"
                     onClick={() => {
-                      scrolltoHash(item.href)
-                      setActiveLink(item.label)
+                      scrolltoHash(item.href);
+                      setActiveLink(item.label);
                     }}
                   >
                     {item.label}
@@ -134,8 +133,8 @@ function Navbar() {
                     <div
                       className="hover:cursor-pointer"
                       onClick={() => {
-                        toggleNavbar()
-                        scrolltoHash(item.href)
+                        toggleNavbar();
+                        scrolltoHash(item.href);
                       }}
                     >
                       {item.label}
@@ -148,10 +147,10 @@ function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
 
 const HamburgerMenu = (props: { toggleMenu: () => void; isOpen: boolean }) => (
   <button
@@ -177,4 +176,4 @@ const HamburgerMenu = (props: { toggleMenu: () => void; isOpen: boolean }) => (
       )}
     ></span>
   </button>
-)
+);
