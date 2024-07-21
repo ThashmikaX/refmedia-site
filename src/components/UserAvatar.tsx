@@ -14,11 +14,11 @@ export default function UserAvatar({ name, avatar, title }: UserAvatarProps) {
             src={avatar}
             width={80}
             height={80}
+            className="object-cover"
             placeholder="blur"
             sizes="80px"
             alt="Team member"
             quality={100}
-            objectFit="cover"
           />
         </div>
       </div>

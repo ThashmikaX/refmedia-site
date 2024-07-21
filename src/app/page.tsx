@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import TheTeamBehind from "@/components/TheTeamBehind";
 import Heading from "@/components/Heading";
 import About from "@/components/About";
+import ContactUs from "@/components/ContactUs";
 
 export default function Home() {
   return (
@@ -41,6 +42,15 @@ export default function Home() {
       <section id="theTeamBehind">
         <TheTeamBehind />
       </section>
+      <section id="contactUs">
+        <ContactUs />
+      </section>
+      {/* <section id="parallexText" className="w-full">
+        <ParallaxText 
+        line1="Bridging Innovation and Communication – Explore, Engage, Elevate"
+        line2="Capturing Excellence, Inspiring Innovation - We are REF Media"
+        />
+      </section> */}
     </main>
   );
 }

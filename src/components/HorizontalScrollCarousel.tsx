@@ -24,7 +24,7 @@ export default function HorizontalScrollCarousel() {
             return (
               <Image
                 key={index}
-                className="w-[145.99px] h-[97.1px] sm:h-[233.67px] sm:w-[522.99px] rounded-[5.51px]"
+                className="w-[9.124rem] h-[6.069rem] sm:h-[14.604rem] sm:w-[32.687rem] rounded-[5.51px]"
                 src={imageSrc}
                 width={523}
                 height={234}
@@ -43,9 +43,9 @@ export default function HorizontalScrollCarousel() {
             return (
               <Image
                 key={index}
-                className="w-[145.99px] h-[97.1px] sm:h-[233.67px] sm:w-[390.87px] rounded-[5.51px]"
+                className="w-[9.124rem] h-[6.069rem] sm:h-[14.604rem] sm:w-[32.687rem] rounded-[5.51px]"
                 src={imageSrc}
-                width={391}
+                width={523}
                 quality={100}
                 height={234}
                 sizes="(max-width: 425px) 145.99px , 390.87px"
@@ -62,7 +62,7 @@ export default function HorizontalScrollCarousel() {
             return (
               <Image
                 key={index}
-                className="w-[145.99px] h-[97.1px] sm:h-[233.67px] sm:w-[522.99px] rounded-[5.51px]"
+                className="w-[9.124rem] h-[6.069rem] sm:h-[14.604rem] sm:w-[32.687rem] rounded-[5.51px]"
                 src={imageSrc}
                 width={523}
                 height={234}
