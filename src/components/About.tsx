@@ -19,32 +19,41 @@ function About() {
   const controls5 = useAnimation();
   const controls6 = useAnimation();
 
-    useEffect(() => {
-    const animate = async () => {
+  useEffect(() => {
+    const sequence = async () => {
       controls1.start({ ...circleAnim.visible, transition });
       await new Promise((resolve) =>
         setTimeout(resolve, transition.duration * 500)
-      );
+      ); // Wait for half the duration
       controls2.start({ ...circleAnim.visible, transition });
+      controls1.start({ ...circleAnim.hidden, transition });
       await new Promise((resolve) =>
         setTimeout(resolve, transition.duration * 500)
       );
       controls3.start({ ...circleAnim.visible, transition });
+      controls2.start({ ...circleAnim.hidden, transition });
       await new Promise((resolve) =>
         setTimeout(resolve, transition.duration * 500)
       );
       controls4.start({ ...circleAnim.visible, transition });
+      controls3.start({ ...circleAnim.hidden, transition });
       await new Promise((resolve) =>
         setTimeout(resolve, transition.duration * 500)
       );
       controls5.start({ ...circleAnim.visible, transition });
+      controls4.start({ ...circleAnim.hidden, transition });
       await new Promise((resolve) =>
         setTimeout(resolve, transition.duration * 500)
       );
       controls6.start({ ...circleAnim.visible, transition });
+      controls5.start({ ...circleAnim.hidden, transition });
+      await new Promise((resolve) =>
+        setTimeout(resolve, transition.duration * 500)
+      );
+      controls6.start({ ...circleAnim.hidden, transition });
+      sequence(); // Restart the sequence
     };
-
-    animate();
+    sequence();
   }, [controls1, controls2, controls3, controls4, controls5, controls6]);
 
   return (
