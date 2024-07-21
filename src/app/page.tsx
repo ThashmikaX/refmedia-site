@@ -6,6 +6,7 @@ import TheTeamBehind from "@/components/TheTeamBehind";
 import Heading from "@/components/Heading";
 import About from "@/components/About";
 import ContactUs from "@/components/ContactUs";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -44,6 +45,9 @@ export default function Home() {
       </section>
       <section id="contactUs">
         <ContactUs />
+      </section>
+      <section id="footer">
+        <Footer />
       </section>
       {/* <section id="parallexText" className="w-full">
         <ParallaxText 
