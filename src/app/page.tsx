@@ -13,27 +13,12 @@ export default function Home() {
     <main className="min-h-screen bg-white w-full text-primary-foreground relative">
       <div className="h-[2px] w-full bg-main-gradient absolute top-0 z-50"></div>
       <Navbar></Navbar>
-      <section className="w-full" id="home"></section>
-      <div className="min-h-screen">
+      <div className="min-h-screen" id="home">
         <Hero />
       </div>
-      <Heading />
-
-      <div className="min-h-screen bg-cover">
-        {/* <Welcome />
-        <Theme />
-        <Sponsors />
-        <PastEvents />
-        <Organized />
-        <Team/>
-        <FAQ />
-        <Footer></Footer> */}
-        {/* <Countdown/> */}
-      </div>
-
-      {/*Gallery section
-      to test animation h-[300vh] was added
-      */}
+      <section id="heading">
+        <Heading />
+      </section>
       <section id="gallery">
         <Gallery />
       </section>
