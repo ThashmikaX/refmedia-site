@@ -3,6 +3,7 @@ import Gallery from "@/components/Gallery";
 import Hero from "@/components/Hero";
 import TheTeamBehind from "@/components/TheTeamBehind";
 import ContactUs from "@/components/ContactUs";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -36,6 +37,9 @@ export default function Home() {
       </section>
       <section id="contactUs">
         <ContactUs />
+      </section>
+      <section id="footer">
+        <Footer />
       </section>
       {/* <section id="parallexText" className="w-full">
         <ParallaxText 
