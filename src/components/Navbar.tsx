@@ -84,7 +84,7 @@ function Navbar() {
   return (
     <nav className={"sticky top-0 z-50 flex justify-center"}>
       <div className="absolute w-full backdrop-blur-lg bg-black bg-opacity-50 lg:rounded-lg lg:m-8 lg:w-[95%]">
-        <div className="container mx-auto px-4 relative lg:text-sm">
+        <div className="container mx-auto px-4 relative lg:text-[16px]">
           <div className="py-3 md:py-4 flex justify-between items-center">
             <div className="flex items-center flex-shrink-0">
               <img
@@ -99,7 +99,7 @@ function Navbar() {
                   key={index}
                   className={
                     activeLink == item.label
-                      ? "bg-text-gradient font-bold text-transparent bg-clip-text"
+                      ? "bg-text-gradient font-bold text-[#fef837] bg-clip-text"
                       : undefined
                   }
                 >
@@ -123,8 +123,9 @@ function Navbar() {
             </div>
           </div>
           {mobileDrawerOpen && (
-            <div className="fixed right-0 z-20 bg-[#01224D] w-full pt-2 flex flex-col justify-center lg:hidden">
-              <ul>
+            <div className="fixed right-0 z-20 backdrop-blur-lg bg-black bg-opacity-50 w-full pt-2 flex flex-col justify-center lg:hidden">
+              <div className="">
+                <ul>
                 {navItems.map((item, index) => (
                   <li
                     key={index}
@@ -142,6 +143,7 @@ function Navbar() {
                   </li>
                 ))}
               </ul>
+              </div>
             </div>
           )}
         </div>
@@ -159,19 +161,19 @@ const HamburgerMenu = (props: { toggleMenu: () => void; isOpen: boolean }) => (
   >
     <span
       className={clsx(
-        "block w-full h-0.5 bg-text-gradient transform transition duration-300",
+        "block w-full h-0.5 bg-white transform transition duration-300",
         { "rotate-45 translate-y-1.5": props.isOpen }
       )}
     ></span>
     <span
       className={clsx(
-        "block w-full h-0.5 bg-text-gradient transition duration-300",
+        "block w-full h-0.5 bg-white transition duration-300",
         { "opacity-0": props.isOpen }
       )}
     ></span>
     <span
       className={clsx(
-        "block w-full h-0.5 bg-text-gradient transform transition duration-300",
+        "block w-full h-0.5 bg-white transform transition duration-300",
         { "-rotate-45 -translate-y-1.5": props.isOpen }
       )}
     ></span>

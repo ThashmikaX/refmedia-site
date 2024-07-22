@@ -28,7 +28,10 @@ export default function Home() {
       <section id="theTeamBehind">
         <TheTeamBehind />
       </section>
-      <section id="contactUs">
+      <section id="latestnews">
+        <LatestNews />
+      </section>
+      <section id="contact">
         <ContactUs />
       </section>
       <section id="footer">

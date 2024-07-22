@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function Heading() {
   return (
-    <div className="min-h-[100vh]">
+    <div>
       <div
         className="mt-20 w-full  bg-no-repeat bg-cover bg-center flex items-center justify-center text-center text-[48px] leading-[normal] smc:bg-contain smc:text-[35px] smc:mt-0"
         style={{ backgroundImage: "url('/assets/heading/Background.svg')" }}
