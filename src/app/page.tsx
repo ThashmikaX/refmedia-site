@@ -7,6 +7,7 @@ import Heading from "@/components/Heading";
 import About from "@/components/About";
 import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
+import LatestNews from "@/components/LatestNews";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
         <LatestNews />
       </section>
       <section id="contact">
+
         <ContactUs />
       </section>
       <section id="footer">
