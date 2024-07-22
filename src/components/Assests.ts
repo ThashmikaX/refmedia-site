@@ -20,6 +20,10 @@ import pasanSilva from "../../public/assets/teamMembers/pasanSilva.png";
 import vidhuraPolgolla from "../../public/assets/teamMembers/vidhuraPolgolla.png";
 import { IconProps, Icons } from "./ui/Icons";
 
+import logo1 from "../../public/assets/evolutionOfLogos/logo1.png";
+import logo2 from "../../public/assets/evolutionOfLogos/logo2.png";
+import logo3 from "../../public/assets/evolutionOfLogos/logo3.png";
+
 export const row1: StaticImageData[] = [
   row1Image1,
   row1Image2,
@@ -137,5 +141,29 @@ export const socialLinks: socialLink[] = [
     Icon: Icons.linkedIn,
     linkText: "LinkedIn",
     to: "/linkedinlink",
+  },
+];
+
+export type evolutionOfLogo = {
+  imgSrc: StaticImageData;
+  title: string;
+  year: string;
+};
+
+export const evolutionOfLogos: evolutionOfLogo[] = [
+  {
+    imgSrc: logo1,
+    title: "The Beginning",
+    year: "2016",
+  },
+  {
+    imgSrc: logo2,
+    title: "Embracing Modernity",
+    year: "2018",
+  },
+  {
+    imgSrc: logo3,
+    title: "A Bold New Identity",
+    year: "2024",
   },
 ];
