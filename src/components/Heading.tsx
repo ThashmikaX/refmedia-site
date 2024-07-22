@@ -6,7 +6,7 @@ function Heading() {
     <div>
       <div
         className="mt-20 w-full  bg-no-repeat bg-cover bg-center flex items-center justify-center text-center text-[48px] leading-[normal] smc:bg-contain smc:text-[35px] smc:mt-0"
-        style={{ backgroundImage: "url('/assets/heading/Background.svg')" }}
+        style={{ backgroundImage: "url('/assets/line-bg.png')" }}
       >
         <h1 className="z-50 text-black ">
           Empowering Innovation and
