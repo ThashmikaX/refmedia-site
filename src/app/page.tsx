@@ -8,6 +8,7 @@ import About from "@/components/About";
 import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
 import LatestNews from "@/components/LatestNews";
+import EvolutionOfLogo from "@/components/EvolutionOfLogo";
 
 export default function Home() {
   return (
