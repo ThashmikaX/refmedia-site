@@ -7,7 +7,7 @@ import Heading from "@/components/Heading";
 import About from "@/components/About";
 import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
-import EvolutionOfLogo from "@/components/EvolutionOfLogo";
+import LatestNews from "@/components/LatestNews";
 
 export default function Home() {
   return (
@@ -31,6 +31,9 @@ export default function Home() {
       </section>
       <section id="theTeamBehind">
         <TheTeamBehind />
+      </section>
+      <section id="latestnews">
+        <LatestNews />
       </section>
       <section id="contactUs">
         <ContactUs />
