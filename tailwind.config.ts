@@ -12,6 +12,8 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        gridGradient:
+          "radial-gradient(50% 100% at 50% 0%, #FFF 0%, rgba(255, 255, 255, 0.00) 100%)",
       },
       backgroundColor: {
         avatarBackground: "#C7B9DA",
@@ -36,6 +38,12 @@ const config: Config = {
         buttonShadowHoverd:
           "0px 0px 1px 1px #5F00FF, 0px 4px 20px 0px rgba(95, 0, 255, 0.45)",
         buttonShadowPressed: "0px 48px 1px 1px rgba(0, 0, 0, 0.20) inset",
+        containerShadow: "0px 0px 100px 0px rgba(207, 185, 255, 0.50)",
+      },
+      gridTemplateColumns: {
+        "4": "repeat(auto-fit, 240px)",
+        "3": "repeat(auto-fit,minmax(120px,1fr))",
+        "2": "repeat(auto-fit, 100px)",
       },
     },
   },

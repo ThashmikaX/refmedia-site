@@ -58,7 +58,7 @@ function About() {
 
   return (
     <div className="relative min-h-[20vh] my-[96px] sm:my-[128px] flex flex-col gap-[40px] w-full sm:gap-[64px]">
-      <div className="mx-[16px] max-w-[960px] sm:w-full sm:mx-auto text-sectionTitle h-[35px] sm:px-[40px] text-[24px] font-[500px]">
+      <div className="mx-[16px] max-w-[960px] sm:w-full sm:mx-auto text-sectionTitle h-[35px] sm:px-[40px] text-[24px] font-[500]">
         <p>About Us</p>
         <div className="border-b-2 border-border" />
       </div>
@@ -103,14 +103,14 @@ function About() {
           />
           <img
             className="w-[129px] h-[131px]"
-            src="/assets/about/logo.png"
+            src="/assets/aboutComponent/logo.png"
             alt="ref logo"
           />
         </div>
         <div className="flex-1 flex items-center justify-center smc:order-3">
           <img
             className="w-[283px] h-[92px]"
-            src="/assets/about/2016.svg"
+            src="/assets/aboutComponent/2016.svg"
             alt="2016"
           />
         </div>

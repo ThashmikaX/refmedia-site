@@ -13,11 +13,9 @@ export default function ContactCard({
           <Icon className=" w-[24px] h-[24px] bg-[#F4EBFF] shrink-0 " />
         </div>
       </div>
-      <p className="text-[20px] font-[500px] text-supportingText">{title}</p>
-      <p className="text-[16px] font-[300px] text-sectionTitle">
-        {description}
-      </p>
-      <p className="text-[16px] font-[300px] text-[#621BDA]">{details}</p>
+      <p className="text-[20px] font-[500] text-supportingText">{title}</p>
+      <p className="text-[16px] font-[300] text-sectionTitle">{description}</p>
+      <p className="text-[16px] font-[300] text-[#621BDA]">{details}</p>
     </div>
   );
 }

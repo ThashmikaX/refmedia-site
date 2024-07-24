@@ -43,7 +43,7 @@ export const row3: StaticImageData[] = [
   row3Image4,
 ];
 
-type teamMember = {
+export type teamMember = {
   avatar: StaticImageData;
   name: string;
   title: string;

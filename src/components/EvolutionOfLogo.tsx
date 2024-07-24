@@ -5,10 +5,10 @@ export default function EvolutionOfLogo() {
   return (
     <div className="mx-[16px] max-w-[960px] sm:w-full sm:mx-auto sm:px-[40px] my-[96px] sm:my-[128px] flex flex-col gap-[40px] sm:gap-[64px]">
       <div className="w-full flex flex-col gap-[16px] text-supportingText">
-        <p className="text-center text-[35px] font-[400px]">
+        <p className="text-center text-[35px] font-[400]">
           Evolution of Our Logo
         </p>
-        <p className="text-justify text-[16px] font-[300px]">
+        <p className="text-justify text-[16px] font-[300]">
           Since our establishment in 2016, the REF Media Unit has undergone
           significant growth and transformation. A key part of our journey has
           been the evolution of our logo, reflecting our commitment to
