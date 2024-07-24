@@ -5,7 +5,7 @@ import SocialLink from "./SocialLink";
 export default function ContactUs({
   maxWidth,
 }: {
-  maxWidth: string | undefined;
+  maxWidth?: string | undefined;
 }) {
   return (
     <div
