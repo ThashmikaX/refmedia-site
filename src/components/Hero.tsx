@@ -4,14 +4,13 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import WelcomeCard from "./WelcomeCard";
+import { FaPlay } from "react-icons/fa";
+import { FaPause } from "react-icons/fa6";
 
 const images = [
-  "/assets/Slideshow.jpg",
-  "/assets/Slideshow.jpg",
-  "/assets/Slideshow.jpg",
-  "/assets/Slideshow.jpg",
-  "/assets/Slideshow.jpg",
-  "/assets/Slideshow.jpg",
+  { url: "/assets/slideshow/Slideshow.jpg", x: 16.5 },
+  { url: "/assets/slideshow/slide2.png", x: 50.5 }, // prev x + 14.00
+  { url: "/assets/slideshow/slide3.png", x: 84.5 }, // prev x + 14.00
 ];
 
 function Hero() {
@@ -46,18 +45,21 @@ function Hero() {
 
   return (
     <>
-      <div className="min-h-[90vh] relative overflow-hidden">
-        <div className="carousel h-[100%] relative">
+      <div className=" relative overflow-hidden smc:flex smc:mt-20 smc:flex-col smc:mx-4">
+        <div className="h-[100%] relative smc:w-[100vw] smc:order-2">
           <motion.div
             className="flex"
             animate={{ x: `-${currentIndex * 100}%` }}
             transition={{ duration: 1, ease: "easeInOut" }}
           >
             {images.map((image, index) => (
-              <div key={index} className="min-w-full relative">
+              <div
+                key={index}
+                className="min-w-full h-[90vh] smc:h-[25rem] relative"
+              >
                 <Image
-                  className="min-h-[90vh]"
-                  src={image}
+                  className="w-[100%] object-cover"
+                  src={image.url}
                   alt={`Slide ${index + 1}`}
                   layout="fill"
                   objectFit="cover"
@@ -76,21 +78,11 @@ function Hero() {
               className="w-6 h-6 justify-center items-center flex cursor-pointer"
               onClick={() => setIsPlaying(!isPlaying)}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="24"
-                viewBox="0 0 25 24"
-                fill="none"
-              >
-                <path
-                  d="M7.5 4V20M17.5 4V20"
-                  stroke="black"
-                  stroke-opacity="0.85"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                />
-              </svg>
+              {!isPlaying ? (
+                <FaPlay color="black" />
+              ) : (
+                <FaPause color="black" size={20} />
+              )}
             </div>
             <div className="w-[107px] h-6 relative">
               <svg
@@ -100,60 +92,19 @@ function Hero() {
                 viewBox="0 0 108 24"
                 fill="none"
               >
-                <rect
-                  x="92.5"
-                  y="7"
-                  width="10"
-                  height="10"
-                  rx="5"
-                  fill="black"
-                  fill-opacity="0.5"
-                />
-                <rect
-                  x="78.5"
-                  y="7"
-                  width="10"
-                  height="10"
-                  rx="5"
-                  fill="black"
-                  fill-opacity="0.5"
-                />
-                <rect
-                  x="64.5"
-                  y="7"
-                  width="10"
-                  height="10"
-                  rx="5"
-                  fill="black"
-                  fill-opacity="0.5"
-                />
-                <rect
-                  x="50.5"
-                  y="7"
-                  width="10"
-                  height="10"
-                  rx="5"
-                  fill="black"
-                  fill-opacity="0.5"
-                />
-                <rect
-                  x="36.5"
-                  y="7"
-                  width="10"
-                  height="10"
-                  rx="5"
-                  fill="black"
-                  fill-opacity="0.5"
-                />
-                <rect
-                  x="8.5"
-                  y="7"
-                  width="24"
-                  height="10"
-                  rx="5"
-                  fill="black"
-                  fill-opacity="0.5"
-                />
+                {images.map((image, index) => (
+                  <rect
+                    className="transition-all duration-[1s] ease-[ease]"
+                    key={index}
+                    x={`${image.x}`}
+                    y="7"
+                    width={currentIndex === index ? "24" : "10"}
+                    height="10"
+                    rx="5"
+                    fill="black"
+                    fill-opacity="0.5"
+                  />
+                ))}
               </svg>
             </div>
           </div>
@@ -172,7 +123,7 @@ function Hero() {
                 <path
                   d="M15.5 18L9.5 12L15.5 6"
                   stroke="black"
-                  stroke-opacity="0.25"
+                  stroke-opacity="0.85"
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
