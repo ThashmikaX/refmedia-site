@@ -13,7 +13,7 @@ export default function UserAvatar({
   className,
 }: UserAvatarProps) {
   return (
-    <div className="flex-[1_0_0] flex flex-col content-center items-center gap-[20px] max-w-[131px] sm:max-w-[147px]">
+    <div className="flex flex-col content-center items-center gap-[20px] max-w-[131px] sm:max-w-[147px]">
       <div
         className={
           className
@@ -34,7 +34,7 @@ export default function UserAvatar({
           />
         </div>
       </div>
-      <div className="flex flex-col text-center ">
+      <div className="flex flex-col text-center max-w-[100px] md:max-w-none ">
         <p className="text-[16px] font-[500] text-supportingText">{name}</p>
         <p className="text-[13px] font-[300] text-[#6941C6]">{title}</p>
       </div>

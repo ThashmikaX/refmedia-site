@@ -16,16 +16,19 @@ export default function AboutPage() {
         <Icons.lineVector2 />
       </div>
       <CustomBreadcrums />
-      <section className="relative m-[40px] flex flex-col justify-center items-center gap-[48px]">
+      <section className="relative md:m-[40px] flex flex-col justify-center items-center gap-[48px]">
         <p className=" text-[48px] font-[500]">About</p>
-        <p className=" text-[16px] font-[300] text-center max-w-[800px] text-sectionTitle">
+        <p className="text-justify text-[16px] font-[300] md:text-center max-w-[800px] text-sectionTitle">
           Established in 2016, our mission is to highlight and communicate the
           achievements, events, and dynamic activities of our faculty. Through
           dedication and innovation, we aim to enhance the faculty's visibility
           and engagement both within and outside the university.
         </p>
-        <div className="absolute mx-auto bottom-0 right-0  md:bottom-[-280.5px] md:right-[191px] z-[-100] ">
-          <Icons.maskGroup className="w-[393px] h-[197px] md:w-[1057px] md:h-[529px]" />
+        <div className="hidden w-full absolute sm:flex sm:items-center sm:justify-center top-0 left-0 z-[-100] ">
+          <Icons.maskGroupLarge />
+        </div>
+        <div className="sm:hidden flex items-center sm:justify-center w-full absolute top-0 left-0 z-[-100] ">
+          <Icons.maskGroupSmall />
         </div>
       </section>
 
@@ -66,7 +69,7 @@ export default function AboutPage() {
         </div>
         <section
           id="allMembers"
-          className="rounded-[32px] border-[1px] justify-between border-solid border-[#F9F5FF] shadow-containerShadow md:py-[48px] md:px-[32px] p-[20px] max-w-[1300px] w-full mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-[32px] gap-y-[64px]"
+          className="rounded-[32px] border-[1px] justify-center  border-solid border-[#F9F5FF] shadow-containerShadow md:py-[48px] md:px-[32px] p-[20px] max-w-[1300px] w-full mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-[32px] gap-y-[64px]"
         >
           {team.map((member) => (
             <TeamMember
