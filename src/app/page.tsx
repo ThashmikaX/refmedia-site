@@ -9,6 +9,7 @@ import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
 import LatestNews from "@/components/LatestNews";
 import EvolutionOfLogo from "@/components/EvolutionOfLogo";
+import TextAnimationSection from "@/components/TextAnimationSection"
 
 export default function Home() {
   return (
@@ -29,6 +30,9 @@ export default function Home() {
       </section>
       <section id="evolutionOfLogo">
         <EvolutionOfLogo />
+      </section>
+      <section id="text-animation">
+        <TextAnimationSection />
       </section>
       <section id="theTeamBehind">
         <TheTeamBehind />
