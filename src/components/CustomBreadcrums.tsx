@@ -22,7 +22,7 @@ export default function CustomBreadcrums() {
           <>
             <BreadcrumbItem className="px-[8px] py-[4px]" key={item}>
               <BreadcrumbLink
-                className="capitalize text-[13px] font-[400px]"
+                className="capitalize text-[13px] underline font-[400]"
                 href={`/${item === "home" ? "" : item}`}
               >
                 {item}
