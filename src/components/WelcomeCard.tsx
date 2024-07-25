@@ -33,7 +33,7 @@ function CarouselNav() {
           </div>
         </div>
         <div className="self-stretch justify-between items-center inline-flex gap-5">
-          <div className="w-[241.50px]">
+          <div>
             <span className="text-black text-opacity-90 text-base font-light">
               the
             </span>
@@ -45,7 +45,11 @@ function CarouselNav() {
               of the Engineering Faculty, University of Ruhuna
             </span>
           </div>
-          <img src="/assets/Union.svg" alt="ref logo" />
+          <img
+            className="w-[100%] object-cover xsc:w-[150px]"
+            src="/assets/Union.svg"
+            alt="ref logo"
+          />
         </div>
         <div className="smc:w-[100%] smc:flex smc:items-center smc:justify-center">
           <Button Icon={MyIcon}>Find Out More</Button>

@@ -25,6 +25,7 @@ const config: Config = {
         lgc: { max: "1023px" }, // => @media (max-width: 1023px) { ... }
         mdc: { max: "767px" }, // => @media (max-width: 767px) { ... }
         smc: { max: "639px" }, // => @media (max-width: 639px) { ... }
+        xsc: { max: "470px" },
       },
       colors: {
         sectionTitle: "rgba(0, 0, 0, 0.5)",

@@ -8,9 +8,12 @@ import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa6";
 
 const images = [
-  { url: "/assets/slideshow/Slideshow.jpg", x: 16.5 },
-  { url: "/assets/slideshow/slide2.png", x: 50.5 }, // prev x + 14.00
-  { url: "/assets/slideshow/slide3.png", x: 84.5 }, // prev x + 14.00
+  { url: "/assets/slideshow/1.jpg", x: 6.5 },
+  { url: "/assets/slideshow/2.jpg", x: 30.5 }, // prev x + 14.00
+  { url: "/assets/slideshow/3.jpg", x: 54.5 }, // prev x + 14.00
+  { url: "/assets/slideshow/4.jpg", x: 78.5 }, // prev x + 14.00
+  { url: "/assets/slideshow/5.jpg", x: 102.5 }, // prev x + 14.00
+  { url: "/assets/slideshow/6.jpg", x: 126.5 }, // prev x + 14.00
 ];
 
 function Hero() {
@@ -72,10 +75,10 @@ function Hero() {
         <WelcomeCard />
       </div>
       <div className="flex justify-center items-center m-4">
-        <div className="w-[275px] h-10 justify-start items-center gap-8 inline-flex">
-          <div className="px-3 py-2 bg-white rounded-[20px] border border-black/opacity-5 justify-start items-center flex">
+        <div className=" h-10 justify-start items-center gap-8 inline-flex smc:scale-75">
+          <div className="px-3 py-2 bg-white rounded-[20px] border border-black/opacity-5 justify-start items-center flex gap-3">
             <div
-              className="w-6 h-6 justify-center items-center flex cursor-pointer"
+              className=" h-6 justify-center items-center flex cursor-pointer"
               onClick={() => setIsPlaying(!isPlaying)}
             >
               {!isPlaying ? (
@@ -84,21 +87,20 @@ function Hero() {
                 <FaPause color="black" size={20} />
               )}
             </div>
-            <div className="w-[107px] h-6 relative">
+            <div className="w-[150px] h-6 relative">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="108"
-                height="24"
-                viewBox="0 0 108 24"
+                viewBox="0 0 150 24"
                 fill="none"
+                className="flex items-center justify-between"
               >
                 {images.map((image, index) => (
                   <rect
-                    className="transition-all duration-[1s] ease-[ease]"
+                    className="transition-all duration-[1s] ease-[ease] "
                     key={index}
                     x={`${image.x}`}
                     y="7"
-                    width={currentIndex === index ? "24" : "10"}
+                    width={currentIndex === index ? "20" : "10"}
                     height="10"
                     rx="5"
                     fill="black"
