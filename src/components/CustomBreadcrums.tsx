@@ -17,7 +17,7 @@ export default function CustomBreadcrums() {
   });
   return (
     <Breadcrumb className="text-sectionTitle">
-      <BreadcrumbList className="px-[32px] py-[4px]">
+      <BreadcrumbList className="md:px-[32px] py-[4px]">
         {pathArray.map((item, index) => (
           <>
             <BreadcrumbItem className="px-[8px] py-[4px]" key={item}>

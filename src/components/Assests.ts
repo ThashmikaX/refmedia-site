@@ -120,27 +120,27 @@ export const socialLinks: socialLink[] = [
   {
     Icon: Icons.facebook,
     linkText: "Facebook",
-    to: "/fblink",
+    to: "https://web.facebook.com/refmediauor",
   },
-  {
-    Icon: Icons.instergram,
-    linkText: "Instergram",
-    to: "/instalink",
-  },
-  {
-    Icon: Icons.tiktok,
-    linkText: "Tiktok",
-    to: "/tiktokLink",
-  },
+  // {
+  //   Icon: Icons.instergram,
+  //   linkText: "Instergram",
+  //   to: "/instalink",
+  // },
+  // {
+  //   Icon: Icons.tiktok,
+  //   linkText: "Tiktok",
+  //   to: "/tiktokLink",
+  // },
   {
     Icon: Icons.youtube,
     linkText: "Youtube",
-    to: "/ytLink",
+    to: "https://www.youtube.com/@refmedia",
   },
   {
     Icon: Icons.linkedIn,
     linkText: "LinkedIn",
-    to: "/linkedinlink",
+    to: "https://www.linkedin.com/company/ref-media",
   },
 ];
 
