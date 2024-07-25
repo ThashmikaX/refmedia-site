@@ -16,10 +16,10 @@ export default function Logo({ imgSrc, title, year }: evolutionOfLogo) {
       />
 
       <div className="w-full flex flex-col  gap-[4px]">
-        <p className="text-center text-supportingText text-[16px] font-[500px]">
+        <p className="text-center text-supportingText text-[16px] font-[500]">
           {title}
         </p>
-        <p className="text-center text-[#6941C6] text-[13px] font-[300px]">
+        <p className="text-center text-[#6941C6] text-[13px] font-[300]">
           {year}
         </p>
       </div>

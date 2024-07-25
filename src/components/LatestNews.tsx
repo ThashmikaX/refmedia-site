@@ -6,7 +6,7 @@ import UserAvatar from "./UserAvatar";
 export default function LatestNews() {
   return (
     <div className="mx-[16px] max-w-[960px] sm:w-full sm:mx-auto sm:px-[40px] my-[96px] sm:my-[128px] flex flex-col gap-[40px] sm:gap-[64px]">
-      <div className="text-sectionTitle h-[35px]  text-[24px] font-[500px]">
+      <div className="text-sectionTitle h-[35px]  text-[24px] font-[500]">
         <p>Latest News</p>
         <div className="border-b-2 border-border " />
       </div>
