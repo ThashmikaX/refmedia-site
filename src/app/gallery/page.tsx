@@ -18,7 +18,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 const Gallery = () => {
   const [activeMonth, setActiveMonth] = useState("July");
 
-  const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onClick = (e: React.MouseEvent<HTMLLIElement>) => {
     setActiveMonth(e.currentTarget.id);
   };
   return (
