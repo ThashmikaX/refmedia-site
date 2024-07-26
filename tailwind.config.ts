@@ -1,53 +1,80 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
-const config: Config = {
+const config = {
+  darkMode: ["class"],
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
+  prefix: "",
   theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        gridGradient:
-          "radial-gradient(50% 100% at 50% 0%, #FFF 0%, rgba(255, 255, 255, 0.00) 100%)",
-      },
-      backgroundColor: {
-        avatarBackground: "#C7B9DA",
-      },
+    container: {
+      center: true,
+      padding: "2rem",
       screens: {
-        sm: "425px",
-        // "2xlc": { max: "1535px" }, // => @media (max-width: 1535px) { ... }
-        xlc: { max: "1279px" }, // => @media (max-width: 1279px) { ... }
-        lgc: { max: "1023px" }, // => @media (max-width: 1023px) { ... }
-        mdc: { max: "767px" }, // => @media (max-width: 767px) { ... }
-        smc: { max: "639px" }, // => @media (max-width: 639px) { ... }
-        xsc: { max: "470px" },
+        "2xl": "1400px",
       },
+    },
+    extend: {
       colors: {
-        sectionTitle: "rgba(0, 0, 0, 0.5)",
-        supportingText: "rgba(0, 0, 0, 0.85)",
-        border: "rgba(0, 0, 0, 0.1)",
-        button: "rgba(98, 27, 218, 1)",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
-      boxShadow: {
-        buttonShadowDefault:
-          "0px 0px 1px 1px #5F00FF, 0px 4px 20px 0px rgba(95, 0, 255, 0.45), 0px 16px 20px 0px rgba(95, 0, 255, 0.20)",
-        buttonShadowHoverd:
-          "0px 0px 1px 1px #5F00FF, 0px 4px 20px 0px rgba(95, 0, 255, 0.45)",
-        buttonShadowPressed: "0px 48px 1px 1px rgba(0, 0, 0, 0.20) inset",
-        containerShadow: "0px 0px 100px 0px rgba(207, 185, 255, 0.50)",
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
-      gridTemplateColumns: {
-        "4": "repeat(auto-fit, 240px)",
-        "3": "repeat(auto-fit,minmax(120px,1fr))",
-        "2": "repeat(auto-fit, 100px)",
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [],
-};
-export default config;
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config
+
+export default config
