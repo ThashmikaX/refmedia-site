@@ -13,10 +13,10 @@ const MyIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M7 13L12 18L17 13M7 6L12 11L17 6"
       stroke="white"
-      stroke-opacity="0.85"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeOpacity="0.85"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

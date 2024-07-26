@@ -64,8 +64,8 @@ function Hero() {
                   className="w-[100%] object-cover"
                   src={image.url}
                   alt={`Slide ${index + 1}`}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: 'cover' }}
                   priority={true}
                 />
               </div>
@@ -96,7 +96,7 @@ function Hero() {
               >
                 {images.map((image, index) => (
                   <rect
-                    className="transition-all duration-[1s] ease-[ease] "
+                    className="transition-all duration-\[1s\] ease-\[ease\] "
                     key={index}
                     x={`${image.x}`}
                     y="7"
@@ -104,7 +104,7 @@ function Hero() {
                     height="10"
                     rx="5"
                     fill="black"
-                    fill-opacity="0.5"
+                    fillOpacity="0.5"
                   />
                 ))}
               </svg>
@@ -125,10 +125,10 @@ function Hero() {
                 <path
                   d="M15.5 18L9.5 12L15.5 6"
                   stroke="black"
-                  stroke-opacity="0.85"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeOpacity="0.85"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
@@ -146,10 +146,10 @@ function Hero() {
                 <path
                   d="M9.5 18L15.5 12L9.5 6"
                   stroke="black"
-                  stroke-opacity="0.85"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeOpacity="0.85"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
