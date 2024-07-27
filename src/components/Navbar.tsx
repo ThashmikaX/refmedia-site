@@ -107,7 +107,7 @@ function Navbar() {
                     className="hover:cursor-pointer nav-link"
                     onClick={() => {
                       if (item.label == 'About') {
-                        window.location.href = '/about/#allMembers';
+                        window.location.href = '/about';
                       } else {
                         scrolltoHash(item.href);
                       }
