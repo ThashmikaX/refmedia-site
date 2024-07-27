@@ -46,7 +46,7 @@ function Hero() {
   return (
     <>
       <div className=" relative overflow-hidden smc:flex smc:mt-20 smc:flex-col smc:mx-4">
-        <div className="h-[100%] relative smc:w-[100vw] smc:order-2 my-8">
+        <div className="h-[100%] relative smc:w-[100vw] smc:order-2 my-8 md:my-0">
           <motion.div
             className="flex"
             animate={{ x: `-${currentIndex * 100}%` }}
