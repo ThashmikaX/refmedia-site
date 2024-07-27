@@ -27,21 +27,21 @@ function CarouselNav() {
       <div className="z-[100] w-[531px] h-[277px] p-6 bg-white bg-opacity-70 rounded-2xl border-4 border-white border-opacity-10 backdrop-blur-2xl flex-col justify-start items-start gap-8 inline-flex smc:bg-white smc:border-none smc:w-[100%] smc:rounded-none">
         <div className="border-b-2 border-solid border-[#0000002a] self-stretch h-[35px] flex-col justify-start items-start gap-1 flex">
           <div className="px-2 justify-center items-center gap-2.5 inline-flex ">
-            <div className="text-center text-black text-opacity-50 text-2xl font-bold  font-['Outfit'] ">
+            <div className="text-center text-black text-opacity-50 text-2xl font-bold   ">
               Welcome to
             </div>
           </div>
         </div>
         <div className="self-stretch justify-between items-center inline-flex">
           <div className="w-[241.50px]">
-            <span className="text-black text-opacity-90 text-base font-light font-['Outfit']">
+            <span className="text-black text-opacity-90 text-base font-light ">
               the
             </span>
-            <span className="text-black text-opacity-90 text-base font-semibold font-['Outfit']">
+            <span className="text-black text-opacity-90 text-base font-semibold ">
               {" "}
               Media Unit{" "}
             </span>
-            <span className="text-black text-opacity-90 text-base font-light font-['Outfit']">
+            <span className="text-black text-opacity-90 text-base font-light ">
               of the Engineering Faculty, University of Ruhuna
             </span>
           </div>

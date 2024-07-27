@@ -17,19 +17,19 @@ export default function LatestNews() {
         />
         <div className="self-stretch h-[310px] px-2 flex-col justify-start items-start gap-4 flex">
           <div className="self-stretch h-[74px] flex-col justify-start items-start gap-2 flex">
-            <div className="self-stretch text-black/opacity-90 text-2xl font-medium font-['Outfit']">
+            <div className="self-stretch text-black/opacity-90 text-2xl font-medium ">
               Annual General Meeting 2024
             </div>
             <div className="self-stretch h-9 flex-col justify-start items-start gap-1 flex">
-              <div className="self-stretch text-black/opacity-90 text-[13px] font-light font-['Outfit']">
+              <div className="self-stretch text-black/opacity-90 text-[13px] font-light ">
                 By Chathuni Rathnayake
               </div>
-              <div className="self-stretch text-black/opacity-90 text-[13px] font-light font-['Outfit']">
+              <div className="self-stretch text-black/opacity-90 text-[13px] font-light ">
                 March 26, 2024
               </div>
             </div>
           </div>
-          <div className="self-stretch text-justify text-black/opacity-90 text-base font-light font-['Outfit']">
+          <div className="self-stretch text-justify text-black/opacity-90 text-base font-light ">
             The Media Unit of the Engineering Faculty at the University of
             Ruhuna successfully held its Annual General Meeting on March 20,
             2024. The event was a significant milestone, bringing together
