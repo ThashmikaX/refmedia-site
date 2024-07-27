@@ -33,3 +33,18 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Add this to your global CSS file if needed */
+.nav-link {
+  @apply relative inline-block px-3 py-2 lg:rounded-lg;
+}
+
+.nav-link::before {
+  @apply absolute inset-0 bg-white opacity-0 transition-opacity duration-300 lg:rounded-lg;
+  content: '';
+  z-index: -1;
+}
+
+.nav-link:hover::before {
+  @apply opacity-20 lg:rounded-lg;
+}

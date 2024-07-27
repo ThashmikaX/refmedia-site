@@ -8,9 +8,9 @@ import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa6";
 
 const images = [
-  { url: "/assets/slideshow/Slideshow.jpg", x: 16.5 },
-  { url: "/assets/slideshow/slide2.png", x: 50.5 }, // prev x + 14.00
-  { url: "/assets/slideshow/slide3.png", x: 84.5 }, // prev x + 14.00
+  { url: "/assets/slideshow/1.jpg", x: 16.5 },
+  { url: "/assets/slideshow/2.jpg", x: 50.5 }, // prev x + 14.00
+  { url: "/assets/slideshow/3.jpg", x: 84.5 }, // prev x + 14.00
 ];
 
 function Hero() {
