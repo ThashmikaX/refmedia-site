@@ -2,15 +2,28 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const navItems = [
+type NavItem = {
+  label: string;
+  href: string;
+  isSeperatePage?: boolean | undefined;
+};
+
+const navItems: NavItem[] = [
   { label: "Home", href: "home" },
   { label: "Gallery", href: "gallery" },
-  { label: "About", href: "about" },
+  { label: "About", href: "about", isSeperatePage: true },
   { label: "Contact", href: "contact" },
 ];
 
 function Navbar() {
+  const pathName = usePathname();
+  const pathArray = pathName.split("/").map((item) => {
+    if (item === "") return "home";
+    return item;
+  });
+  const currentPath = pathArray[pathArray.length - 1];
   const scrolltoHash = function (element_id: string) {
     const element = document.getElementById(element_id);
 
@@ -82,7 +95,7 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className={"sticky top-0 z-50 flex justify-center"}>
+    <nav className={"flex-[0_0_auto] sticky top-0 z-50 flex justify-center"}>
       <div className="absolute w-full backdrop-blur-lg bg-black bg-opacity-50">
         <div className="container mx-auto px-4 relative lg:text-[16px]">
           <div className="py-3 md:py-6 flex justify-between items-center">
@@ -103,19 +116,20 @@ function Navbar() {
                       : undefined
                   }
                 >
-                  <div
+                  <Link
                     className="hover:cursor-pointer nav-link"
+                    href={
+                      item.isSeperatePage ? `/${item.href}` : `/#${item.href}`
+                    }
                     onClick={() => {
-                      if (item.label == 'About') {
-                        window.location.href = '/about';
-                      } else {
+                      if (!item.isSeperatePage && currentPath === "home") {
                         scrolltoHash(item.href);
                       }
                       setActiveLink(item.label);
                     }}
                   >
                     {item.label}
-                  </div>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -130,27 +144,34 @@ function Navbar() {
             <div className="fixed right-0 z-20 backdrop-blur-lg bg-black text-white bg-opacity-50 w-full pt-2 flex flex-col justify-center lg:hidden">
               <div className="">
                 <ul>
-                {navItems.map((item, index) => (
-                  <li
-                    key={index}
-                    className="py-3 pl-8 border-b-2 border-primary-background"
-                  >
-                    <div
-                      className="hover:cursor-pointer"
-                      onClick={() => {
-                        toggleNavbar();
-                        if (item.label == 'About') {
-                        window.location.href = '/about/#allMembers';
-                      } else {
-                        scrolltoHash(item.href);
+                  {navItems.map((item, index) => (
+                    <li
+                      key={index}
+                      className={
+                        activeLink == item.label
+                          ? "bg-text-gradient text-[#fef837] bg-clip-text"
+                          : undefined
                       }
-                      }}
                     >
-                      {item.label}
-                    </div>
-                  </li>
-                ))}
-              </ul>
+                      <Link
+                        className="hover:cursor-pointer nav-link"
+                        href={
+                          item.isSeperatePage
+                            ? `/${item.href}`
+                            : `/#${item.href}`
+                        }
+                        onClick={() => {
+                          if (!item.isSeperatePage && currentPath === "home") {
+                            scrolltoHash(item.href);
+                          }
+                          setActiveLink(item.label);
+                        }}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           )}
@@ -174,10 +195,9 @@ const HamburgerMenu = (props: { toggleMenu: () => void; isOpen: boolean }) => (
       )}
     ></span>
     <span
-      className={clsx(
-        "block w-full h-0.5 bg-white transition duration-300",
-        { "opacity-0": props.isOpen }
-      )}
+      className={clsx("block w-full h-0.5 bg-white transition duration-300", {
+        "opacity-0": props.isOpen,
+      })}
     ></span>
     <span
       className={clsx(

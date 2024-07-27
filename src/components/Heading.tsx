@@ -13,7 +13,7 @@ function Heading() {
           <br /> Communication
         </h1>
       </div>
-      <p className="text-black text-center max-w-[50rem] m-auto px-10 py-[64px]">
+      <p className="text-supportingText font-[300] text-center t max-w-[50rem] m-auto px-10 py-[64px]">
         Our media unit serves as the bridge between the engineering faculty and
         the community. We strive to enhance the visibility of our research,
         events, and achievements through various media channels.
