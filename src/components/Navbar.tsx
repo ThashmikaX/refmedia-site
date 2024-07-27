@@ -83,30 +83,34 @@ function Navbar() {
 
   return (
     <nav className={"sticky top-0 z-50 flex justify-center"}>
-      <div className="absolute w-full backdrop-blur-lg bg-black bg-opacity-50 lg:rounded-lg lg:m-8 lg:w-[95%]">
+      <div className="absolute w-full backdrop-blur-lg bg-black bg-opacity-50">
         <div className="container mx-auto px-4 relative lg:text-[16px]">
-          <div className="py-3 md:py-4 flex justify-between items-center">
+          <div className="py-3 md:py-6 flex justify-between items-center">
             <div className="flex items-center flex-shrink-0">
               <img
-                className={"mr-2 duration-500 h-12 md:h-16"}
+                className={"mr-2 duration-500 h-8 md:h-10"}
                 src="/assets/Logo.svg"
                 alt="Logo"
               />
             </div>
-            <ul className="hidden lg:flex ml-14 space-x-12 ">
+            <ul className="hidden lg:flex ml-14 space-x-12 text-white">
               {navItems.map((item, index) => (
                 <li
                   key={index}
                   className={
                     activeLink == item.label
-                      ? "bg-text-gradient font-bold text-[#fef837] bg-clip-text"
+                      ? "bg-text-gradient text-[#fef837] bg-clip-text"
                       : undefined
                   }
                 >
                   <div
-                    className="hover:cursor-pointer"
+                    className="hover:cursor-pointer nav-link"
                     onClick={() => {
-                      scrolltoHash(item.href);
+                      if (item.label == 'About') {
+                        window.location.href = '/about/#allMembers';
+                      } else {
+                        scrolltoHash(item.href);
+                      }
                       setActiveLink(item.label);
                     }}
                   >
