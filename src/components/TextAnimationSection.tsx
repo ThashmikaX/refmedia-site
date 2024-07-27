@@ -4,7 +4,7 @@ import UserAvatar from "./UserAvatar";
 export default function TextAnimationSection() {
   return (
     <>
-      <div className="bg-[url('/assets/fac-bg.jpg')] bg-cover bg-center bg-fixed h-screen flex items-center justify-center flex-col">
+      <div className="bg-[url('/assets/fac-bg.jpg')] bg-cover bg-center md:bg-fixed h-screen flex items-center justify-center flex-col">
         <div className="bg-black/20 backdrop-blur-[5px] justify-center items-center overflow-hidden w-full">
           <div className="self-stretch justify-center items-center gap-2 inline-flex animate-slideLeftRight">
             <div className="text-white/90 text-[32px] md:text-[64px] font-sans whitespace-nowrap">

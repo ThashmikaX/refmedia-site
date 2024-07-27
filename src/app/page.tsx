@@ -28,17 +28,17 @@ export default function Home() {
       <section id="about">
         <About />
       </section>
-      <section id="evolutionOfLogo">
-        <EvolutionOfLogo />
+      <section id="theTeamBehind">
+        <TheTeamBehind />
       </section>
       <section id="text-animation">
         <TextAnimationSection />
       </section>
-      <section id="theTeamBehind">
-        <TheTeamBehind />
-      </section>
       <section id="latestnews">
         <LatestNews />
+      </section>
+      <section id="evolutionOfLogo">
+        <EvolutionOfLogo />
       </section>
       <section id="contact">
 
