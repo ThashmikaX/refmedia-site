@@ -127,7 +127,7 @@ function Navbar() {
             </div>
           </div>
           {mobileDrawerOpen && (
-            <div className="fixed right-0 z-20 backdrop-blur-lg bg-black bg-opacity-50 w-full pt-2 flex flex-col justify-center lg:hidden">
+            <div className="fixed right-0 z-20 backdrop-blur-lg bg-black text-white bg-opacity-50 w-full pt-2 flex flex-col justify-center lg:hidden">
               <div className="">
                 <ul>
                 {navItems.map((item, index) => (
@@ -139,7 +139,11 @@ function Navbar() {
                       className="hover:cursor-pointer"
                       onClick={() => {
                         toggleNavbar();
+                        if (item.label == 'About') {
+                        window.location.href = '/about/#allMembers';
+                      } else {
                         scrolltoHash(item.href);
+                      }
                       }}
                     >
                       {item.label}
