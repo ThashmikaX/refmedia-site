@@ -17,7 +17,9 @@ const Gallery = () => {
           of the Engineering Faculty at the University of Ruhuna. Witness the
           spirit of innovation and collaboration that defines our community.
         </p>
-        <Button Icon={Icons.arrowUpRight}>View Gallery</Button>
+        <Button asLink={true} to={"/gallery"} Icon={Icons.arrowUpRight}>
+          View Gallery
+        </Button>
       </div>
     </div>
   );
