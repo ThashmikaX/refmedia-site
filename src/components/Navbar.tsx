@@ -68,7 +68,9 @@ function Navbar() {
     }
   };
 
-  const [activeLink, setActiveLink] = useState("Home");
+  const [activeLink, setActiveLink] = useState(
+    currentPath.charAt(0).toUpperCase() + currentPath.slice(1)
+  );
 
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
 
