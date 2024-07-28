@@ -6,11 +6,23 @@ import Image from "next/image";
 import WelcomeCard from "./WelcomeCard";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa6";
+import { title } from "process";
 
 const images = [
-  { url: "/assets/slideshow/1.jpg", x: 16.5 },
-  { url: "/assets/slideshow/2.jpg", x: 50.5 }, // prev x + 14.00
-  { url: "/assets/slideshow/3.jpg", x: 84.5 }, // prev x + 14.00
+  {
+    url: "/assets/slideshow/1.jpg",
+    x: 6.5,
+    title: "Sample Text",
+  },
+  { url: "/assets/slideshow/2.jpg", x: 30.5, title: "Sample Text" }, // prev x + 14.00
+  {
+    url: "/assets/slideshow/3.jpg",
+    x: 54.5,
+    title: "Techno 2023 - National Engineering & Technology Exhibition",
+  }, // prev x + 14.00
+  { url: "/assets/slideshow/4.jpg", x: 78.5, title: "Pongal Festival 2024" }, // prev x + 14.00
+  { url: "/assets/slideshow/5.jpg", x: 102.5, title: "Spike Fiesta 2024" }, // prev x + 14.00
+  { url: "/assets/slideshow/6.jpg", x: 126.5, title: "Sample Text" }, // prev x + 14.00
 ];
 
 function Hero() {
@@ -45,8 +57,8 @@ function Hero() {
 
   return (
     <>
-      <div className=" relative overflow-hidden smc:flex smc:mt-20 smc:flex-col smc:mx-4">
-        <div className="h-[100%] relative smc:w-[100vw] smc:order-2 my-8 md:my-0">
+      <div className=" relative overflow-hidden smc:flex smc:mt-20 smc:flex-col smc:mx-4 rounded-b-3xl smc:rounded-b-2xl ">
+        <div className="h-[100%] relative smc:w-[100vw] smc:order-2 ">
           <motion.div
             className="flex"
             animate={{ x: `-${currentIndex * 100}%` }}
@@ -55,7 +67,7 @@ function Hero() {
             {images.map((image, index) => (
               <div
                 key={index}
-                className="min-w-full h-[90vh] smc:h-[25rem] relative"
+                className="min-w-[100%] h-[90vh] smc:h-[25rem] relative"
               >
                 <Image
                   className="w-[100%] object-cover"
@@ -65,6 +77,12 @@ function Hero() {
                   objectFit="cover"
                   priority={true}
                 />
+
+                <div className="absolute bottom-0 right-0 h-11 px-4 py-2 bg-black/50 rounded-tl-[28px] backdrop-blur-[2px] justify-end items-center gap-2.5 inline-flex smc:pr-16">
+                  <div className="text-white/90 text-[13px] font-medium leading-7">
+                    {image.title}
+                  </div>
+                </div>
               </div>
             ))}
           </motion.div>
@@ -72,10 +90,10 @@ function Hero() {
         <WelcomeCard />
       </div>
       <div className="flex justify-center items-center m-4">
-        <div className="w-[275px] h-10 justify-start items-center gap-8 inline-flex">
-          <div className="px-3 py-2 bg-white rounded-[20px] border border-black/opacity-5 justify-start items-center flex">
+        <div className=" h-10 justify-start items-center gap-8 inline-flex smc:scale-75">
+          <div className="px-3 py-2 bg-white rounded-[20px] border border-black/opacity-5 justify-start items-center flex gap-3">
             <div
-              className="w-6 h-6 justify-center items-center flex cursor-pointer"
+              className=" h-6 justify-center items-center flex cursor-pointer"
               onClick={() => setIsPlaying(!isPlaying)}
             >
               {!isPlaying ? (
@@ -84,21 +102,20 @@ function Hero() {
                 <FaPause color="black" size={20} />
               )}
             </div>
-            <div className="w-[107px] h-6 relative">
+            <div className="w-[150px] h-6 relative">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="108"
-                height="24"
-                viewBox="0 0 108 24"
+                viewBox="0 0 150 24"
                 fill="none"
+                className="flex items-center justify-between"
               >
                 {images.map((image, index) => (
                   <rect
-                    className="transition-all duration-[1s] ease-[ease]"
+                    className="transition-all duration-[1s] ease-[ease] "
                     key={index}
                     x={`${image.x}`}
                     y="7"
-                    width={currentIndex === index ? "24" : "10"}
+                    width={currentIndex === index ? "20" : "10"}
                     height="10"
                     rx="5"
                     fill="black"
