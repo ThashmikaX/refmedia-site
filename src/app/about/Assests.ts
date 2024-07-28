@@ -25,12 +25,12 @@ import HettiarachchiNK from "../../../public/assets/about/team/Dr. Hettiarachchi
 export const team: teamMember[] = [
   {
     avatar: HirunSeneviratne,
-    name: "Hiran Senivirathna",
+    name: "Hiran Seneviratna",
     title: "President",
   },
   {
     avatar: ChamikaRohan,
-    name: "Chamilka Rohan",
+    name: "Chamika Rohan",
     title: "Photography & Videography Lead",
   },
   {

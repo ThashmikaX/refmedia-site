@@ -51,12 +51,12 @@ export type teamMember = {
 export const teamMembers: teamMember[] = [
   {
     avatar: hiranSenevirathna,
-    name: "Hiran Senivirathna",
+    name: "Hiran Seneviratna",
     title: "President",
   },
   {
     avatar: chamikaRohan,
-    name: "Chamilka Rohan",
+    name: "Chamika Rohan",
     title: "Photography & Videography Lead",
   },
   {
