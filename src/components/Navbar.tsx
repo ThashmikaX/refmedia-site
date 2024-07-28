@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type NavItem = {
   label: string;
@@ -18,6 +18,7 @@ const navItems: NavItem[] = [
 ];
 
 function Navbar() {
+  const router = useRouter();
   const pathName = usePathname();
   const pathArray = pathName.split("/").map((item) => {
     if (item === "") return "home";
@@ -116,20 +117,23 @@ function Navbar() {
                       : undefined
                   }
                 >
-                  <Link
+                  <div
                     className="hover:cursor-pointer nav-link"
-                    href={
-                      item.isSeperatePage ? `/${item.href}` : `/#${item.href}`
-                    }
                     onClick={() => {
                       if (!item.isSeperatePage && currentPath === "home") {
                         scrolltoHash(item.href);
+                      } else {
+                        router.push(
+                          item.isSeperatePage
+                            ? `/${item.href}`
+                            : `/#${item.href}`
+                        );
                       }
                       setActiveLink(item.label);
                     }}
                   >
                     {item.label}
-                  </Link>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -153,22 +157,22 @@ function Navbar() {
                           : undefined
                       }
                     >
-                      <Link
+                      <div
                         className="hover:cursor-pointer nav-link"
-                        href={
-                          item.isSeperatePage
-                            ? `/${item.href}`
-                            : `/#${item.href}`
-                        }
                         onClick={() => {
                           if (!item.isSeperatePage && currentPath === "home") {
                             scrolltoHash(item.href);
+                          } else {
+                            router.push(
+                              item.isSeperatePage
+                                ? `/${item.href}`
+                                : `/#${item.href}`
+                            );
                           }
-                          setActiveLink(item.label);
                         }}
                       >
                         {item.label}
-                      </Link>
+                      </div>
                     </li>
                   ))}
                 </ul>
