@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import localFont from '@next/font/local'
+import localFont from "next/font/local";
 
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -18,13 +20,12 @@ export const metadata: Metadata = {
 const clash = localFont({
   src: [
     {
-      path: '../../public/fonts/ClashDisplay-Medium.woff',
-      weight: '500'
-    }
-
+      path: "../../public/fonts/ClashDisplay-Medium.woff",
+      weight: "500",
+    },
   ],
-  variable: '--font-clash'
-})
+  variable: "--font-clash",
+});
 
 export default function RootLayout({
   children,
@@ -32,13 +33,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head >
-        <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500&display=swap" rel="stylesheet"></link>
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@500&display=swap"
+          rel="stylesheet"
+        ></link>
       </head>
-      <body className={outfit.className}>{children}</body>
+      <body className={outfit.className}>
+        <div className="flex flex-col min-h-[100dvh]">
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }
-
-
