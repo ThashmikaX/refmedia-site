@@ -77,8 +77,8 @@ function Hero() {
                   priority={true}
                 />
 
-                <div className="absolute bottom-0 right-0 h-11 px-4 py-2 bg-black/50 rounded-tl-[28px] backdrop-blur-[2px] justify-end items-center gap-2.5 inline-flex smc:pr-16">
-                  <div className="text-white/90 text-[13px] font-medium leading-7">
+                <div className="absolute bottom-0 right-0 h-11 px-4 py-2 bg-black/50 rounded-tl-[28px] backdrop-blur-[2px] justify-end items-center gap-2.5 inline-flex pr-5 smc:pr-16">
+                  <div className="text-white/90 text-[13px] smc:text-[10px] font-medium leading-7">
                     {image.title}
                   </div>
                 </div>
