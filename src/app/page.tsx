@@ -9,7 +9,7 @@ import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
 import LatestNews from "@/components/LatestNews";
 import EvolutionOfLogo from "@/components/EvolutionOfLogo";
-import TextAnimationSection from "@/components/TextAnimationSection"
+import TextAnimationSection from "@/components/TextAnimationSection";
 
 export default function Home() {
   return (
@@ -41,7 +41,6 @@ export default function Home() {
         <EvolutionOfLogo />
       </section>
       <section id="contact">
-
         <ContactUs />
       </section>
       <section id="footer">

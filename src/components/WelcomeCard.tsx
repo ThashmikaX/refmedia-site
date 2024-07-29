@@ -53,7 +53,7 @@ function CarouselNav() {
           />
         </div>
         <div className="smc:w-[100%] smc:flex smc:items-center smc:justify-center">
-          <Button asLink={true} to={"/gallery"} Icon={MyIcon}>
+          <Button asLink={true} to={"#heading"} Icon={MyIcon}>
             Find Out More
           </Button>
         </div>

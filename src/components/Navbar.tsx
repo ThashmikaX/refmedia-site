@@ -106,8 +106,8 @@ function Navbar() {
                   <div
                     className="hover:cursor-pointer nav-link"
                     onClick={() => {
-                      if (item.label == 'About') {
-                        window.location.href = '/about';
+                      if (item.label == "About") {
+                        window.location.href = "/about";
                       } else {
                         scrolltoHash(item.href);
                       }
@@ -130,27 +130,27 @@ function Navbar() {
             <div className="fixed right-0 z-20 backdrop-blur-lg bg-black text-white bg-opacity-50 w-full pt-2 flex flex-col justify-center lg:hidden">
               <div className="">
                 <ul>
-                {navItems.map((item, index) => (
-                  <li
-                    key={index}
-                    className="py-3 pl-8 border-b-2 border-primary-background"
-                  >
-                    <div
-                      className="hover:cursor-pointer"
-                      onClick={() => {
-                        toggleNavbar();
-                        if (item.label == 'About') {
-                        window.location.href = '/about/#allMembers';
-                      } else {
-                        scrolltoHash(item.href);
-                      }
-                      }}
+                  {navItems.map((item, index) => (
+                    <li
+                      key={index}
+                      className="py-3 pl-8 border-b-2 border-primary-background"
                     >
-                      {item.label}
-                    </div>
-                  </li>
-                ))}
-              </ul>
+                      <div
+                        className="hover:cursor-pointer"
+                        onClick={() => {
+                          toggleNavbar();
+                          if (item.label == "About") {
+                            window.location.href = "/about/#allMembers";
+                          } else {
+                            scrolltoHash(item.href);
+                          }
+                        }}
+                      >
+                        {item.label}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           )}
@@ -174,10 +174,9 @@ const HamburgerMenu = (props: { toggleMenu: () => void; isOpen: boolean }) => (
       )}
     ></span>
     <span
-      className={clsx(
-        "block w-full h-0.5 bg-white transition duration-300",
-        { "opacity-0": props.isOpen }
-      )}
+      className={clsx("block w-full h-0.5 bg-white transition duration-300", {
+        "opacity-0": props.isOpen,
+      })}
     ></span>
     <span
       className={clsx(
