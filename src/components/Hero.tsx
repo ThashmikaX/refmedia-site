@@ -6,7 +6,6 @@ import Image from "next/image";
 import WelcomeCard from "./WelcomeCard";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa6";
-import { title } from "process";
 
 const images = [
   {
@@ -14,15 +13,15 @@ const images = [
     x: 6.5,
     title: "Sample Text",
   },
-  { url: "/assets/slideshow/2.jpg", x: 30.5, title: "Sample Text" }, // prev x + 14.00
+  { url: "/assets/slideshow/2.jpg", x: 30.5, title: "Sample Text" },
   {
     url: "/assets/slideshow/3.jpg",
     x: 54.5,
     title: "Techno 2023 - National Engineering & Technology Exhibition",
-  }, // prev x + 14.00
-  { url: "/assets/slideshow/4.jpg", x: 78.5, title: "Pongal Festival 2024" }, // prev x + 14.00
-  { url: "/assets/slideshow/5.jpg", x: 102.5, title: "Spike Fiesta 2024" }, // prev x + 14.00
-  { url: "/assets/slideshow/6.jpg", x: 126.5, title: "Sample Text" }, // prev x + 14.00
+  },
+  { url: "/assets/slideshow/4.jpg", x: 78.5, title: "Pongal Festival 2024" },
+  { url: "/assets/slideshow/5.jpg", x: 102.5, title: "Spike Fiesta 2024" },
+  { url: "/assets/slideshow/6.jpg", x: 126.5, title: "Sample Text" },
 ];
 
 function Hero() {
@@ -43,7 +42,7 @@ function Hero() {
         clearInterval(interval);
       }
     };
-  }, [isPlaying, images.length]);
+  }, [isPlaying]);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -57,7 +56,7 @@ function Hero() {
 
   return (
     <>
-      <div className=" relative overflow-hidden smc:flex smc:mt-20 smc:flex-col smc:mx-4 rounded-b-3xl smc:rounded-b-2xl ">
+      <div className="relative overflow-hidden smc:flex smc:mt-20 smc:flex-col smc:mx-4 rounded-b-3xl smc:rounded-b-2xl ">
         <div className="h-[100%] relative smc:w-[100vw] smc:order-2 ">
           <motion.div
             className="flex"
@@ -78,8 +77,17 @@ function Hero() {
                   priority={true}
                 />
 
-                <div className="absolute bottom-0 right-0 h-11 px-4 py-2 bg-black/50 rounded-tl-[28px] backdrop-blur-[2px] justify-end items-center gap-2.5 inline-flex smc:pr-16">
-                  <div className="text-white/90 text-[13px] font-medium leading-7">
+                <div
+                  className={`absolute bottom-0 right-0 h-11 px-4 py-2 bg-black/50 rounded-tl-[28px] backdrop-blur-[2px] justify-end items-center gap-2.5 inline-flex smc:pr-16 ${
+                    image.url === "/assets/slideshow/3.jpg" && "smc:pr-10"
+                  }`}
+                >
+                  <div
+                    className={`text-white/90 text-[13px] font-medium leading-7 ${
+                      image.url === "/assets/slideshow/3.jpg" &&
+                      "smc:text-[10px]"
+                    }`}
+                  >
                     {image.title}
                   </div>
                 </div>
@@ -90,10 +98,10 @@ function Hero() {
         <WelcomeCard />
       </div>
       <div className="flex justify-center items-center m-4">
-        <div className=" h-10 justify-start items-center gap-8 inline-flex smc:scale-75">
+        <div className="h-10 justify-start items-center gap-8 inline-flex smc:scale-75">
           <div className="px-3 py-2 bg-white rounded-[20px] border border-black/opacity-5 justify-start items-center flex gap-3">
             <div
-              className=" h-6 justify-center items-center flex cursor-pointer"
+              className="h-6 justify-center items-center flex cursor-pointer"
               onClick={() => setIsPlaying(!isPlaying)}
             >
               {!isPlaying ? (
@@ -111,7 +119,7 @@ function Hero() {
               >
                 {images.map((image, index) => (
                   <rect
-                    className="transition-all duration-[1s] ease-[ease] "
+                    className="transition-all duration-[1s] ease-[ease]"
                     key={index}
                     x={`${image.x}`}
                     y="7"
@@ -119,7 +127,7 @@ function Hero() {
                     height="10"
                     rx="5"
                     fill="black"
-                    fill-opacity="0.5"
+                    fillOpacity="0.5"
                   />
                 ))}
               </svg>
@@ -140,10 +148,10 @@ function Hero() {
                 <path
                   d="M15.5 18L9.5 12L15.5 6"
                   stroke="black"
-                  stroke-opacity="0.85"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeOpacity="0.85"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
@@ -161,10 +169,10 @@ function Hero() {
                 <path
                   d="M9.5 18L15.5 12L9.5 6"
                   stroke="black"
-                  stroke-opacity="0.85"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeOpacity="0.85"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
