@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 type NavItem = {
@@ -68,6 +67,7 @@ function Navbar() {
     }
   };
 
+  //changed initial state value otherwise 'Home' is set as activeLink in about page after a refresh
   const [activeLink, setActiveLink] = useState(
     currentPath.charAt(0).toUpperCase() + currentPath.slice(1)
   );
@@ -171,6 +171,7 @@ function Navbar() {
                                 : `/#${item.href}`
                             );
                           }
+                          setActiveLink(item.label);
                         }}
                       >
                         {item.label}
