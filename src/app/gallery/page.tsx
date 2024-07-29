@@ -71,7 +71,7 @@ const Gallery = () => {
                   }`}
                   key={month.month}
                   id={month.month}
-                  onClick={onClick}
+                  // onClick={onClick}
                 >
                   {month.month}
                 </li>
