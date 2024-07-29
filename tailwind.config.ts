@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-const { fontFamily } = require('tailwindcss/defaultTheme')
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 const config: Config = {
   content: [
@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Clash Display', ...fontFamily.sans],
+        sans: ["Clash Display", ...fontFamily.sans],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -29,6 +29,7 @@ const config: Config = {
         lgc: { max: "1023px" }, // => @media (max-width: 1023px) { ... }
         mdc: { max: "767px" }, // => @media (max-width: 767px) { ... }
         smc: { max: "639px" }, // => @media (max-width: 639px) { ... }
+        xsc: { max: "470px" },
       },
       colors: {
         sectionTitle: "rgba(0, 0, 0, 0.5)",
