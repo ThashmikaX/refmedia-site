@@ -25,7 +25,7 @@ import HettiarachchiNK from "../../../public/assets/about/team/Dr. Hettiarachchi
 export const team: teamMember[] = [
   {
     avatar: HirunSeneviratne,
-    name: "Hiran Seneviratna",
+    name: "Hirun Seneviratne",
     title: "President",
   },
   {
