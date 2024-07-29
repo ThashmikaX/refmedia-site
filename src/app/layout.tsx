@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -38,7 +40,13 @@ export default function RootLayout({
           rel="stylesheet"
         ></link>
       </head>
-      <body className={outfit.className}>{children}</body>
+      <body className={outfit.className}>
+        <div className="flex flex-col min-h-[100dvh]">
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }
