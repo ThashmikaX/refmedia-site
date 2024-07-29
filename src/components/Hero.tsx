@@ -11,9 +11,9 @@ const images = [
   {
     url: "/assets/slideshow/1.jpg",
     x: 6.5,
-    title: "Sample Text",
+    title: "Faculty of Engineering, University of Ruhuna",
   },
-  { url: "/assets/slideshow/2.jpg", x: 30.5, title: "Sample Text" },
+  { url: "/assets/slideshow/2.jpg", x: 30.5, title: "Annual General Meeting of SSMENA" },
   {
     url: "/assets/slideshow/3.jpg",
     x: 54.5,
@@ -21,7 +21,7 @@ const images = [
   },
   { url: "/assets/slideshow/4.jpg", x: 78.5, title: "Pongal Festival 2024" },
   { url: "/assets/slideshow/5.jpg", x: 102.5, title: "Spike Fiesta 2024" },
-  { url: "/assets/slideshow/6.jpg", x: 126.5, title: "Sample Text" },
+  { url: "/assets/slideshow/6.jpg", x: 126.5, title: "DMME Field Visit 2024" },
 ];
 
 function Hero() {
