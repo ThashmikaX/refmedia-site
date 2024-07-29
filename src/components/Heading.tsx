@@ -13,7 +13,7 @@ function Heading() {
           <br /> Communication
         </h1>
         <div
-          className="absolute -top-30 left-0 min-w-[100vw] min-h-[40vh] bg-no-repeat bg-center bg-contain"
+          className="absolute -top-30 left-0 min-w-full min-h-[40vh] bg-no-repeat bg-center bg-contain"
           style={{ backgroundImage: "url('/assets/line-bg.png')" }}
         ></div>
       </div>
