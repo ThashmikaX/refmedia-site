@@ -51,7 +51,7 @@ export type teamMember = {
 export const teamMembers: teamMember[] = [
   {
     avatar: hiranSenevirathna,
-    name: "Hiran Seneviratna",
+    name: "Hirun Seneviratne",
     title: "President",
   },
   {
@@ -122,16 +122,16 @@ export const socialLinks: socialLink[] = [
     linkText: "Facebook",
     to: "https://web.facebook.com/refmediauor",
   },
-  // {
-  //   Icon: Icons.instergram,
-  //   linkText: "Instergram",
-  //   to: "/instalink",
-  // },
-  // {
-  //   Icon: Icons.tiktok,
-  //   linkText: "Tiktok",
-  //   to: "/tiktokLink",
-  // },
+  {
+    Icon: Icons.instergram,
+    linkText: "Instergram",
+    to: "/instalink",
+  },
+  {
+    Icon: Icons.tiktok,
+    linkText: "Tiktok",
+    to: "/tiktokLink",
+  },
   {
     Icon: Icons.youtube,
     linkText: "Youtube",

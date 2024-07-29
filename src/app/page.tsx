@@ -1,21 +1,18 @@
-"use client";
-import Navbar from "@/components/Navbar";
+"use client"; //todo remove use client
 import Gallery from "@/components/Gallery";
 import Hero from "@/components/Hero";
 import TheTeamBehind from "@/components/TheTeamBehind";
 import Heading from "@/components/Heading";
 import About from "@/components/About";
 import ContactUs from "@/components/ContactUs";
-import Footer from "@/components/Footer";
 import LatestNews from "@/components/LatestNews";
 import EvolutionOfLogo from "@/components/EvolutionOfLogo";
-import TextAnimationSection from "@/components/TextAnimationSection"
+import TextAnimationSection from "@/components/TextAnimationSection";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white w-full text-primary-foreground relative">
       <div className="h-[2px] w-full bg-main-gradient absolute top-0 z-50"></div>
-      <Navbar></Navbar>
       <div className="min-h-screen" id="home">
         <Hero />
       </div>
@@ -41,18 +38,8 @@ export default function Home() {
         <EvolutionOfLogo />
       </section>
       <section id="contact">
-
         <ContactUs />
       </section>
-      <section id="footer">
-        <Footer />
-      </section>
-      {/* <section id="parallexText" className="w-full">
-        <ParallaxText 
-        line1="Bridging Innovation and Communication – Explore, Engage, Elevate"
-        line2="Capturing Excellence, Inspiring Innovation - We are REF Media"
-        />
-      </section> */}
     </main>
   );
 }
