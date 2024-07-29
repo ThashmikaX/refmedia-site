@@ -94,7 +94,6 @@ function Navbar() {
     // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("scroll", setActiveLinks);
     };
   }, []);
 
@@ -123,20 +122,16 @@ function Navbar() {
                   <div
                     className="hover:cursor-pointer nav-link"
                     onClick={() => {
-                      if (item.label == "About") {
-                        window.location.href = "/about";
+                      if (!item.isSeperatePage && currentPath === "home") {
+                        scrolltoHash(item.href);
                       } else {
-                        if (!item.isSeperatePage && currentPath === "home") {
-                          scrolltoHash(item.href);
-                        } else {
-                          router.push(
-                            item.isSeperatePage
-                              ? `/${item.href}`
-                              : `/#${item.href}`
-                          );
-                        }
-                        setActiveLink(item.label);
+                        router.push(
+                          item.isSeperatePage
+                            ? `/${item.href}`
+                            : `/#${item.href}`
+                        );
                       }
+                      setActiveLink(item.label);
                     }}
                   >
                     {item.label}
@@ -158,16 +153,23 @@ function Navbar() {
                   {navItems.map((item, index) => (
                     <li
                       key={index}
-                      className="py-3 pl-8 border-b-2 border-primary-background"
+                      className={
+                        activeLink == item.label
+                          ? "bg-text-gradient text-[#fef837] bg-clip-text"
+                          : undefined
+                      }
                     >
                       <div
-                        className="hover:cursor-pointer"
+                        className="hover:cursor-pointer nav-link"
                         onClick={() => {
-                          toggleNavbar();
-                          if (item.label == "About") {
-                            window.location.href = "/about/#allMembers";
-                          } else {
+                          if (!item.isSeperatePage && currentPath === "home") {
                             scrolltoHash(item.href);
+                          } else {
+                            router.push(
+                              item.isSeperatePage
+                                ? `/${item.href}`
+                                : `/#${item.href}`
+                            );
                           }
                           setActiveLink(item.label);
                         }}
