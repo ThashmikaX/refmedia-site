@@ -6,12 +6,12 @@ export default function Footer() {
   return (
     <div className="w-full py-8 bg-gray-50 flex-col justify-start items-center gap-16 inline-flex">
       <div className="self-stretch h-20 flex-col lg:px-[100px] justify-start items-start gap-16 flex">
-        <div className="self-stretch h-20 flex-col lg:flex-row justify-between items-center gap-8 flex lg:inline-flex">
+        <div className="self-stretch h-20 flex-col justify-between items-center gap-8 flex md:flex-row-reverse">
           <div className="justify-start items-center gap-6 inline-flex">
-            <a href={socialLinks[0].to}>
+            <a href={socialLinks[3].to}>
               <img
                 className={"w-6 h-6 relative"}
-                src="/assets/Social/x.svg"
+                src="/assets/Social/youtube.svg"
                 alt="Logo"
               />
             </a>
@@ -26,13 +26,6 @@ export default function Footer() {
               <img
                 className={"w-6 h-6 relative"}
                 src="/assets/Social/facebook.svg"
-                alt="Logo"
-              />
-            </a>
-            <a href={socialLinks[3].to}>
-              <img
-                className={"w-6 h-6 relative"}
-                src="/assets/Social/github.svg"
                 alt="Logo"
               />
             </a>

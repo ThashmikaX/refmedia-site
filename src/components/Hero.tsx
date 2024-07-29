@@ -72,8 +72,8 @@ function Hero() {
                   className="w-[100%] object-cover"
                   src={image.url}
                   alt={`Slide ${index + 1}`}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: 'cover' }}
                   priority={true}
                 />
 
