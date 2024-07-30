@@ -60,7 +60,7 @@ function About() {
     <div className="relative min-h-[20vh] my-[96px] sm:my-[128px] flex flex-col gap-[40px] w-full sm:gap-[64px]">
       <div className="mx-[16px] max-w-[960px] sm:w-full sm:mx-auto text-sectionTitle h-[35px] sm:px-[40px] text-[24px] font-[500]">
         <p>About Us</p>
-        <div className="border-b-2 border-border" />
+        <div className="border-b-2 border-border w-[100px] smc:w-[100%]" />
       </div>
       <div className="max-w-[960px] mx-[16px] sm:w-full sm:mx-auto sm:px-[40px] text-black flex items-center justify-between gap-10 smc:flex-col">
         <div className="flex-1 smc:order-2 smc:text-center">
