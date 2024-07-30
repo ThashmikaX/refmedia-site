@@ -2,15 +2,29 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
-const navItems = [
+type NavItem = {
+  label: string;
+  href: string;
+  isSeperatePage?: boolean | undefined;
+};
+
+const navItems: NavItem[] = [
   { label: "Home", href: "home" },
   { label: "Gallery", href: "gallery" },
-  { label: "About", href: "about" },
+  { label: "About", href: "about", isSeperatePage: true },
   { label: "Contact", href: "contact" },
 ];
 
 function Navbar() {
+  const router = useRouter();
+  const pathName = usePathname();
+  const pathArray = pathName.split("/").map((item) => {
+    if (item === "") return "home";
+    return item;
+  });
+  const currentPath = pathArray[pathArray.length - 1];
   const scrolltoHash = function (element_id: string) {
     const element = document.getElementById(element_id);
 
@@ -54,7 +68,9 @@ function Navbar() {
     }
   };
 
-  const [activeLink, setActiveLink] = useState("Home");
+  const [activeLink, setActiveLink] = useState(
+    currentPath.charAt(0).toUpperCase() + currentPath.slice(1)
+  );
 
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
 
@@ -78,11 +94,12 @@ function Navbar() {
     // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", setActiveLinks);
     };
   }, []);
 
   return (
-    <nav className={"sticky top-0 z-50 flex justify-center"}>
+    <nav className={"flex-[0_0_auto] sticky top-0 z-50 flex justify-center"}>
       <div className="absolute w-full backdrop-blur-lg bg-black bg-opacity-50">
         <div className="container mx-auto px-4 relative lg:text-[16px]">
           <div className="py-3 md:py-6 flex justify-between items-center">
@@ -109,9 +126,17 @@ function Navbar() {
                       if (item.label == "About") {
                         window.location.href = "/about";
                       } else {
-                        scrolltoHash(item.href);
+                        if (!item.isSeperatePage && currentPath === "home") {
+                          scrolltoHash(item.href);
+                        } else {
+                          router.push(
+                            item.isSeperatePage
+                              ? `/${item.href}`
+                              : `/#${item.href}`
+                          );
+                        }
+                        setActiveLink(item.label);
                       }
-                      setActiveLink(item.label);
                     }}
                   >
                     {item.label}
@@ -144,6 +169,7 @@ function Navbar() {
                           } else {
                             scrolltoHash(item.href);
                           }
+                          setActiveLink(item.label);
                         }}
                       >
                         {item.label}

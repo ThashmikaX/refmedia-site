@@ -8,7 +8,7 @@ import ContactUs from "@/components/ContactUs";
 
 export default function AboutPage() {
   return (
-    <main className="relative text-supportingText min-h-screen w-full px-[16px] mx-auto md:mx-0">
+    <main className="mt-[56px] md:mt-[88px] relative text-supportingText min-h-screen w-full px-[16px] mx-auto md:mx-0">
       <div className="hidden md:block absolute z-[-400] top-[80px]">
         <Icons.lineVector1 />
       </div>
@@ -24,12 +24,12 @@ export default function AboutPage() {
           dedication and innovation, we aim to enhance the faculty's visibility
           and engagement both within and outside the university.
         </p>
-        <div className="hidden w-full absolute sm:flex sm:items-center sm:justify-center top-0 left-0 z-[-100] ">
+        {/* <div className="hidden w-full absolute md:flex sm:items-center sm:justify-center top-0 left-0 z-[-100] ">
           <Icons.maskGroupLarge />
         </div>
-        <div className="sm:hidden flex items-center sm:justify-center w-full absolute top-0 left-0 z-[-100] ">
+        <div className="md:hidden flex items-center sm:justify-center w-full absolute top-0 left-0 z-[-100] ">
           <Icons.maskGroupSmall />
-        </div>
+        </div> */}
       </section>
 
       <div className="flex flex-col gap-[32px] md:gap-[64px]">
@@ -43,10 +43,10 @@ export default function AboutPage() {
           quality={100}
           sizes="(max-width: 425px) 390px , 480px"
         />
-        <div className="flex flex-col gap-[16px] md:gap-0 md:flex-row md:justify-between py-[32px] px-0 md:p-[24px] w-full max-w-[1200px] mx-auto">
+        <div className="flex flex-col gap-[16px] lg:gap-0 lg:flex-row lg:justify-between py-[32px] px-0 lg:p-[24px] w-full max-w-[1200px] mx-auto">
           <Icons.ourMissionLarge className="hidden md:block w-[239px] h-[96px]" />
           <Icons.ourMissionSmall className="md:hidden w-[159px] h-[65px]" />
-          <p className="w-full text-justify text-[16px] font-[300] md:max-w-[420px]">
+          <p className="w-full text-justify text-[16px] font-[300] lg:max-w-[420px]">
             To create, manage, and disseminate high-quality content that
             showcases the vibrant life and cutting-edge research at the
             Engineering Faculty. We strive to be the voice of the faculty,
@@ -54,10 +54,10 @@ export default function AboutPage() {
             effectively and engagingly.
           </p>
         </div>
-        <div className="flex flex-col gap-[16px] md:gap-0 md:flex-row md:justify-between py-[32px] px-0 md:p-[24px] w-full max-w-[1200px] mx-auto">
+        <div className="flex flex-col gap-[16px] lg:gap-0 lg:flex-row lg:justify-between py-[32px] px-0 lg:p-[24px] w-full max-w-[1200px] mx-auto">
           <Icons.theTeamBehindLarge className="hidden md:block w-[414px] h-[96px]" />
           <Icons.theTeamBehindSmall className="md:hidden w-[277px] h-[65px]" />
-          <p className="w-full text-justify text-[16px] font-[300] md:max-w-[420px]">
+          <p className="w-full text-justify text-[16px] font-[300] lg:max-w-[420px]">
             Meet the dedicated team that drives the Media Unit of the
             Engineering Faculty at the University of Ruhuna. Our team is
             composed of passionate individuals who work tirelessly to ensure our

@@ -62,8 +62,8 @@ function About() {
         <p>About Us</p>
         <div className="border-b-2 border-border w-[100px] smc:w-[100%]" />
       </div>
-      <div className="max-w-[960px] mx-[16px] sm:w-full sm:mx-auto sm:px-[40px] text-black flex items-center justify-between gap-10 smc:flex-col">
-        <div className="flex-1 smc:order-2 smc:text-center">
+      <div className="max-w-[960px] mx-[16px] sm:w-full sm:mx-auto sm:px-[40px] font-[300] text-supportingText flex items-center justify-between gap-10 smc:flex-col">
+        <div className="flex-1 smc:order-2 smc:text-justify">
           Established in 2016, The Media Unit of the Engineering Faculty at the
           University of Ruhuna is dedicated to promoting the faculty's
           activities and achievements. Our team works tirelessly to create
