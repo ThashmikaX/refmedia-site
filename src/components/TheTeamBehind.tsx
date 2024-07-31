@@ -22,7 +22,7 @@ export default function TheTeamBehind() {
           innovative and engaging media presence.
         </p>
       </div>
-      <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(140px,1fr))] justify-between mdc:gap-5">
+      <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(90px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(140px,1fr))] justify-between ">
         {teamMembers.map((member, index) => (
           <UserAvatar
             avatar={member.avatar}
