@@ -5,10 +5,11 @@ import maskImage from "../../../public/assets/about/MaskGroup.png";
 import { seniorTreasurer, team } from "./Assests";
 import TeamMember from "./components/TeamMember";
 import ContactUs from "@/components/ContactUs";
+import { GridBackground } from "@/components/GridBackground";
 
 export default function AboutPage() {
   return (
-    <main className="mt-[56px] md:mt-[88px] relative text-supportingText min-h-screen w-full px-[16px] mx-auto md:mx-0">
+    <main className="mt-[56px] md:mt-[76px] relative text-supportingText min-h-screen w-full px-[16px] mx-auto md:mx-0">
       <div className="hidden md:block absolute z-[-400] top-[80px]">
         <Icons.lineVector1 />
       </div>
@@ -16,21 +17,17 @@ export default function AboutPage() {
         <Icons.lineVector2 />
       </div>
       <CustomBreadcrums />
-      <section className="relative md:m-[40px] flex flex-col justify-center items-center gap-[48px]">
-        <p className=" text-[48px] font-[500]">About</p>
-        <p className="text-justify text-[16px] font-[300] md:text-center max-w-[800px] text-sectionTitle">
-          Established in 2016, our mission is to highlight and communicate the
-          achievements, events, and dynamic activities of our faculty. Through
-          dedication and innovation, we aim to enhance the faculty's visibility
-          and engagement both within and outside the university.
-        </p>
-        {/* <div className="hidden w-full absolute md:flex sm:items-center sm:justify-center top-0 left-0 z-[-100] ">
-          <Icons.maskGroupLarge />
-        </div>
-        <div className="md:hidden flex items-center sm:justify-center w-full absolute top-0 left-0 z-[-100] ">
-          <Icons.maskGroupSmall />
-        </div> */}
-      </section>
+      <GridBackground>
+        <section className="relative md:m-[40px] flex flex-col justify-center items-center gap-[48px]">
+          <p className=" text-[48px] font-[500]">About</p>
+          <p className="text-justify text-[16px] font-[300] md:text-center max-w-[800px] text-sectionTitle">
+            Established in 2016, our mission is to highlight and communicate the
+            achievements, events, and dynamic activities of our faculty. Through
+            dedication and innovation, we aim to enhance the faculty's
+            visibility and engagement both within and outside the university.
+          </p>
+        </section>
+      </GridBackground>
 
       <div className="flex flex-col gap-[32px] md:gap-[64px]">
         <Image
