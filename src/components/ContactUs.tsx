@@ -27,7 +27,6 @@ export default function ContactUs({
         <div className="mx-auto flex flex-col gap-[32px]  md:flex-row md:justify-between">
           {contacts.map((contact) => (
             <ContactCard
-              asLink={contact.asLink}
               href={contact.href}
               key={contact.title}
               Icon={contact.Icon}
