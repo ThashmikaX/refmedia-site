@@ -82,7 +82,7 @@ export const teamMembers: teamMember[] = [
 ];
 
 export type contact = {
-  href: string | undefined;
+  href: string;
   title: string;
   Icon: (props: IconProps) => JSX.Element;
   description: string;
