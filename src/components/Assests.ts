@@ -82,6 +82,7 @@ export const teamMembers: teamMember[] = [
 ];
 
 export type contact = {
+  href: string | undefined;
   title: string;
   Icon: (props: IconProps) => JSX.Element;
   description: string;
@@ -91,18 +92,21 @@ export type contact = {
 export const contacts: contact[] = [
   {
     title: "Email",
+    href: "mailto:contactrefmedia@gmail.com",
     description: "Our friendly team is here to help.",
     details: "contactrefmedia@gmail.com",
     Icon: Icons.mail,
   },
   {
     title: "Phone",
+    href: "tel:+94412222222",
     description: "Mon-Fri from 8am to 5pm.",
     details: "+94 41 22 22222",
     Icon: Icons.phone,
   },
   {
     title: "Address",
+    href: "https://maps.app.goo.gl/KXJeG927DK9PX1yj8",
     description: "Come say hello at our faculty.",
     details:
       "Engineering Faculty, University of Ruhuna, Hapugala, Galle, Sri Lanka",

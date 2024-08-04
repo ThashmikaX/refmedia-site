@@ -2,6 +2,7 @@ import { contact } from "./Assests";
 
 export default function ContactCard({
   Icon,
+  href,
   description,
   details,
   title,
@@ -15,7 +16,13 @@ export default function ContactCard({
       </div>
       <p className="text-[20px] font-[500] text-supportingText">{title}</p>
       <p className="text-[16px] font-[300] text-sectionTitle">{description}</p>
-      <p className="text-[16px] font-[300] text-[#621BDA]">{details}</p>
+      <a
+        href={href}
+        target="_blank"
+        className="text-[16px] hover:underline font-[300] text-[#621BDA]"
+      >
+        {details}
+      </a>
     </div>
   );
 }
