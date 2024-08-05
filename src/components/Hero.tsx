@@ -11,9 +11,9 @@ const images = [
   {
     url: "/assets/slideshow/1.jpg",
     x: 6.5,
-    title: "Sample Text",
+    title: "Faculty of Engineering, University of Ruhuna",
   },
-  { url: "/assets/slideshow/2.jpg", x: 30.5, title: "Sample Text" },
+  { url: "/assets/slideshow/2.jpg", x: 30.5, title: "Annual General Meeting of SSMENA" },
   {
     url: "/assets/slideshow/3.jpg",
     x: 54.5,
@@ -21,7 +21,7 @@ const images = [
   },
   { url: "/assets/slideshow/4.jpg", x: 78.5, title: "Pongal Festival 2024" },
   { url: "/assets/slideshow/5.jpg", x: 102.5, title: "Spike Fiesta 2024" },
-  { url: "/assets/slideshow/6.jpg", x: 126.5, title: "Sample Text" },
+  { url: "/assets/slideshow/6.jpg", x: 126.5, title: "DMME Field Visit 2024" },
 ];
 
 function Hero() {
@@ -72,22 +72,13 @@ function Hero() {
                   className="w-[100%] object-cover"
                   src={image.url}
                   alt={`Slide ${index + 1}`}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: 'cover' }}
                   priority={true}
                 />
 
-                <div
-                  className={`absolute bottom-0 right-0 h-11 px-4 py-2 bg-black/50 rounded-tl-[28px] backdrop-blur-[2px] justify-end items-center gap-2.5 inline-flex smc:pr-16 ${
-                    image.url === "/assets/slideshow/3.jpg" && "smc:pr-10"
-                  }`}
-                >
-                  <div
-                    className={`text-white/90 text-[13px] font-medium leading-7 ${
-                      image.url === "/assets/slideshow/3.jpg" &&
-                      "smc:text-[10px]"
-                    }`}
-                  >
+                <div className="absolute bottom-0 right-0 h-11 px-4 py-2 bg-black/50 rounded-tl-[28px] backdrop-blur-[2px] justify-end items-center gap-2.5 inline-flex pr-5 smc:pr-16">
+                  <div className="text-white/90 text-[13px] smc:text-[10px] font-medium leading-7">
                     {image.title}
                   </div>
                 </div>

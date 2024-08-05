@@ -20,17 +20,18 @@ import UdariMoksha from "../../../public/assets/about/team/Udari Moksha.png";
 import WasanaSenevirathna from "../../../public/assets/about/team/Wasana Senevirathna.png";
 import KavishkaKalhara from "../../../public/assets/about/team/Kavishka Kalhara.png";
 import SudeshThashmika from "../../../public/assets/about/team/Sudesh Thashmika.png";
+import MalithaJeewaka from "../../../public/assets/about/team/MalithJeewaka.png";
 import HettiarachchiNK from "../../../public/assets/about/team/Dr. Hettiarachchi NK.png";
 
 export const team: teamMember[] = [
   {
     avatar: HirunSeneviratne,
-    name: "Hirun Seneviratne",
+    name: "Hirun Seniviratne",
     title: "President",
   },
   {
     avatar: ChamikaRohan,
-    name: "Chamika Rohan",
+    name: "Chamilka Rohan",
     title: "Photography & Videography Lead",
   },
   {
@@ -126,7 +127,7 @@ export const team: teamMember[] = [
   {
     name: "Malitha Jeewaka",
     title: "Developer (Web Team)",
-    avatar: JanithChamikara,
+    avatar: MalithaJeewaka,
   },
   {
     name: "Chamindu Dissanayake",

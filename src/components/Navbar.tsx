@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 type NavItem = {
@@ -68,6 +67,7 @@ function Navbar() {
     }
   };
 
+  //changed initial state value otherwise 'Home' is set as activeLink in about page after a refresh
   const [activeLink, setActiveLink] = useState(
     currentPath.charAt(0).toUpperCase() + currentPath.slice(1)
   );
@@ -100,14 +100,16 @@ function Navbar() {
   return (
     <nav className={"flex-[0_0_auto] sticky top-0 z-50 flex justify-center"}>
       <div className="absolute w-full backdrop-blur-lg bg-black bg-opacity-50">
-        <div className="container mx-auto px-4 relative lg:text-[16px]">
-          <div className="py-3 md:py-6 flex justify-between items-center">
+        <div className=" relative lg:text-[16px] w-full">
+          <div className="py-4 px-4 md:px-16 md:py-3 flex justify-between items-center">
             <div className="flex items-center flex-shrink-0">
-              <img
-                className={"mr-2 duration-500 h-8 md:h-10"}
+              <a href="/#">
+                <img
+                className={"mr-2 duration-500 h-8 md:h-[48px]"}
                 src="/assets/Logo.svg"
                 alt="Logo"
               />
+              </a>
             </div>
             <ul className="hidden lg:flex ml-14 space-x-12 text-white">
               {navItems.map((item, index) => (
@@ -176,6 +178,7 @@ function Navbar() {
                                 : `/#${item.href}`
                             );
                           }
+                          setActiveLink(item.label);
                         }}
                       >
                         {item.label}

@@ -1,4 +1,4 @@
-"use client"; //todo remove use client
+"use client"; //todo remove use client from here
 import Gallery from "@/components/Gallery";
 import Hero from "@/components/Hero";
 import TheTeamBehind from "@/components/TheTeamBehind";
@@ -25,17 +25,17 @@ export default function Home() {
       <section id="about">
         <About />
       </section>
-      <section id="theTeamBehind">
-        <TheTeamBehind />
+      <section id="evolutionOfLogo">
+        <EvolutionOfLogo />
       </section>
       <section id="text-animation">
         <TextAnimationSection />
       </section>
+      <section id="theTeamBehind">
+        <TheTeamBehind />
+      </section>
       <section id="latestnews">
         <LatestNews />
-      </section>
-      <section id="evolutionOfLogo">
-        <EvolutionOfLogo />
       </section>
       <section id="contact">
         <ContactUs />

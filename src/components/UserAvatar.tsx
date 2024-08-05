@@ -13,22 +13,22 @@ export default function UserAvatar({
   className,
 }: UserAvatarProps) {
   return (
-    <div className="flex flex-col content-center items-center gap-[20px] max-w-[131px] sm:max-w-[147px]">
+    <div className="flex flex-col content-center items-center gap-[20px] ">
       <div
         className={
           className
             ? className
-            : "relative w-[80px] h-[80px] rounded-full overflow-hidden bg-avatarBackground border-[4px] border-solid border-[#F9F5FF]"
+            : "relative w-[80px] h-[80px] rounded-full md:rounded-[12px] overflow-hidden bg-avatarBackground border-[4px] border-solid border-[#F9F5FF]"
         }
       >
         <div className="absolute inset-0 transform -translate-y-[10px]">
           <Image
             src={avatar}
-            width={80}
-            height={80}
+            width={90}
+            height={90}
             className="object-cover"
             placeholder="blur"
-            sizes="80px"
+            sizes="(max-width: 425px) 90px, 140px"
             alt="Team member"
             quality={100}
           />

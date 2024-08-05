@@ -123,16 +123,6 @@ export const socialLinks: socialLink[] = [
     to: "https://web.facebook.com/refmediauor",
   },
   {
-    Icon: Icons.instergram,
-    linkText: "Instergram",
-    to: "/instalink",
-  },
-  {
-    Icon: Icons.tiktok,
-    linkText: "Tiktok",
-    to: "/tiktokLink",
-  },
-  {
     Icon: Icons.youtube,
     linkText: "Youtube",
     to: "https://www.youtube.com/@refmedia",

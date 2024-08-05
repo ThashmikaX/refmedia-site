@@ -13,11 +13,11 @@ function Heading() {
           <br /> Communication
         </h1>
         <div
-          className="absolute -top-30 left-0 min-w-[100vw] min-h-[40vh] bg-no-repeat bg-center bg-contain"
+          className="absolute -top-30 left-0 min-w-full min-h-[40vh] bg-no-repeat bg-center bg-contain"
           style={{ backgroundImage: "url('/assets/line-bg.png')" }}
         ></div>
       </div>
-      <p className="text-supportingText font-[300] text-center t max-w-[50rem] m-auto px-10 py-[64px]">
+      <p className="text-supportingText font-[300] text-center t max-w-[50rem] m-auto px-10 py-[64px] sm:text-justify">
         Our media unit serves as the bridge between the engineering faculty and
         the community. We strive to enhance the visibility of our research,
         events, and achievements through various media channels.
