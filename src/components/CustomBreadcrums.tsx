@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import React from 'react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -19,7 +20,7 @@ export default function CustomBreadcrums() {
     <Breadcrumb className="text-sectionTitle">
       <BreadcrumbList className="md:px-[32px] py-[4px]">
         {pathArray.map((item, index) => (
-          <>
+          <React.Fragment key={item}>
             <BreadcrumbItem className="px-[8px] py-[4px]" key={item}>
               <BreadcrumbLink
                 className="capitalize text-[13px] underline font-[400]"
@@ -29,9 +30,9 @@ export default function CustomBreadcrums() {
               </BreadcrumbLink>
             </BreadcrumbItem>
             {index !== pathArray.length - 1 && (
-              <BreadcrumbSeparator className="w-[24px] h-[24px]" />
+              <BreadcrumbSeparator className="w-[24px] h-[24px]" key={`${item}-separator`} />
             )}
-          </>
+          </React.Fragment>
         ))}
       </BreadcrumbList>
     </Breadcrumb>
