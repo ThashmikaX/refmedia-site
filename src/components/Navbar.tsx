@@ -105,10 +105,10 @@ function Navbar() {
             <div className="flex items-center flex-shrink-0">
               <a href="/#">
                 <img
-                className={"mr-2 duration-500 h-8 md:h-[48px]"}
-                src="/assets/Logo.svg"
-                alt="Logo"
-              />
+                  className={"mr-2 duration-500 h-8 md:h-[48px]"}
+                  src="/assets/Logo.svg"
+                  alt="Logo"
+                />
               </a>
             </div>
             <ul className="hidden lg:flex ml-14 space-x-12 text-white">
@@ -132,6 +132,11 @@ function Navbar() {
                             ? `/${item.href}`
                             : `/#${item.href}`
                         );
+                      }
+                      if (item.label == "Gallery") {
+                        window.location.href = "/gallery";
+                      } else {
+                        scrolltoHash(item.href);
                       }
                       setActiveLink(item.label);
                     }}
