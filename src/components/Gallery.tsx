@@ -11,15 +11,15 @@ const Gallery = () => {
       </div>
       <HorizontalScrollCarousel />
       <div className="mx-[16px] max-w-[960px] sm:w-full sm:mx-auto flex flex-col gap-[40px] md:gap-0 md:flex-row sm:px-[40px] justify-between items-center">
-        {/* <p className="text-justify md:text-left text-supportingText md:w-[532.5px] text-[16px] font-[300]"> */}
-        <p className="text-justify md:text-center text-supportingText md:w-full text-[16px] font-[300]">
+        <p className="text-justify md:text-left text-supportingText md:w-[532.5px] text-[16px] font-[300]">
+        {/* <p className="text-justify md:text-center text-supportingText md:w-full text-[16px] font-[300]"> */}
           Explore moments of excellence captured through our lens. Our gallery
           showcases the vibrant life, cutting-edge research, and dynamic events
           of the Engineering Faculty at the University of Ruhuna. Witness the
           spirit of innovation and collaboration that defines our community.
         </p>
         {/*Uncomment after gallery page is done*/}
-        {/* <Button Icon={Icons.arrowUpRight}>View Gallery</Button> */}
+        <Button asLink={true} Icon={Icons.arrowUpRight} to={"/gallery"}>View Gallery</Button>
       </div>
     </div>
   );
