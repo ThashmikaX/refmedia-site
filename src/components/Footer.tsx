@@ -24,7 +24,7 @@ export default function Footer() {
                         alt="Logo"
                     /> </a>
             </div>
-            <div className="self-stretch items-center lg:flex text-center text-gray-500 text-base font-normal font-['Inter'] leading-normal">© 2024 REF Media. All rights reserved.</div>
+            <div className="self-stretch items-center lg:flex text-center text-gray-500 text-base font-normal leading-normal">© 2024 REF Media. All rights reserved.</div>
             </div>
         </div>
       </div>
