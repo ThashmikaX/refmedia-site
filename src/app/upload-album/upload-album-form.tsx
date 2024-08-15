@@ -53,6 +53,10 @@ export default function UploadAlbumForm() {
       toast.error("You need to upload at least 5 images");
       return;
     }
+    if (!photographers) {
+      toast.error("You need to add at least 1 photographers");
+      return;
+    }
     const validData = { ...data, imageLinks, photographers };
     const response = await uploadAlbumAction(validData);
     if (response) {
