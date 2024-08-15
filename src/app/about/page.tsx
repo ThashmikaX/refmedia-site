@@ -1,7 +1,7 @@
 import CustomBreadcrums from "@/components/CustomBreadcrums";
 import { Icons } from "@/components/ui/Icons";
 import Image from "next/image";
-import maskImage from "../../../public/assets/about/MaskGroup.png";
+import maskImage from "../../../public/assets/about/mask-group.svg";
 import { seniorTreasurer, team } from "./Assests";
 import TeamMember from "./components/TeamMember";
 import ContactUs from "@/components/ContactUs";
@@ -9,7 +9,7 @@ import { GridBackground } from "@/components/GridBackground";
 
 export default function AboutPage() {
   return (
-    <main className="mt-[56px] md:mt-[76px] relative text-supportingText min-h-screen w-full px-[16px] mx-auto md:mx-0">
+    <main className="mt-20 md:mt-[76px] relative text-supportingText min-h-screen w-full px-[16px] mx-auto md:mx-0">
       <div className="hidden md:block absolute z-[-400] top-[80px]">
         <Icons.lineVector1 />
       </div>
@@ -39,6 +39,7 @@ export default function AboutPage() {
           height={718}
           quality={100}
           sizes="(max-width: 425px) 390px , 480px"
+          blurDataURL="data:image/svg+xml;base64,..."
         />
         <div className="flex flex-col gap-[16px] lg:gap-0 lg:flex-row lg:justify-between py-[32px] px-0 lg:p-[24px] w-full max-w-[1200px] mx-auto">
           <Icons.ourMissionLarge className="hidden md:block w-[239px] h-[96px]" />
