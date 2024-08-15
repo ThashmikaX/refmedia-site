@@ -99,9 +99,9 @@ export const contacts: contact[] = [
   },
   {
     title: "Phone",
-    href: "tel:+94412222222",
+    href: "tel:+94771343725",
     description: "Mon-Fri from 8am to 5pm.",
-    details: "+94 41 22 22222",
+    details: "+94 77 13 43 725",
     Icon: Icons.phone,
   },
   {
