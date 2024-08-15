@@ -22,6 +22,7 @@ const GalleryDetails = ({
           {title}
         </div>
         <div className="text-black/90 text-[13px] font-light ">{date}</div>
+
         <div className="self-stretch text-justify text-black/90 text-[13px] font-light ">
           {description}
         </div>
