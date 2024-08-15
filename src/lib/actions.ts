@@ -24,7 +24,6 @@ export const signUpAction = async (data: SignUpInputs) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
-    console.log(hashedPassword);
 
     const user = new User({ username, email, hashedPassword });
     const newUser = await user.save();
@@ -87,7 +86,6 @@ export const signInAction = async (data: LoginInputs) => {
       } as Status;
     }
   } catch (error: any) {
-    console.log(error);
     return { status: "error", message: error.message } as Status;
   }
 };
@@ -101,7 +99,6 @@ export const uploadAlbumAction = async (data: UploadAlbum) => {
       imageLinks,
       photographers,
     } = data;
-    console.log(data);
 
     if (
       !albumTitle ||
@@ -127,7 +124,6 @@ export const uploadAlbumAction = async (data: UploadAlbum) => {
       } as Status;
     }
   } catch (error: any) {
-    console.log(error);
     return { status: "error", message: error.message } as Status;
   }
 };

@@ -17,12 +17,9 @@ export default function UploadAlbumForm() {
   const [photographers, setPhotoGraphers] = useState<string[] | undefined>(
     undefined
   );
-  console.log(imageLinks);
   const [currentPhotographer, setCurrentPhotographer] = useState<
     string | undefined
   >(undefined);
-  console.log(currentPhotographer);
-  console.log(photographers);
   const addPhotographers = () => {
     setPhotoGraphers((prev) => {
       if (prev !== undefined && currentPhotographer !== undefined) {
@@ -52,6 +49,10 @@ export default function UploadAlbumForm() {
     resolver: zodResolver(uploadAlbumSchema),
   });
   const onSubmit = async (data: UploadAlbumInputs) => {
+    if (imageLinks?.length != 5) {
+      toast.error("You need to upload at least 5 images");
+      return;
+    }
     const validData = { ...data, imageLinks, photographers };
     const response = await uploadAlbumAction(validData);
     if (response) {
