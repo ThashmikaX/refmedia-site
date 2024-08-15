@@ -1,11 +1,12 @@
 "use client";
 
 import CustomBreadcrums from "@/components/CustomBreadcrums";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import { Icons } from "@/components/ui/Icons";
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -17,10 +18,49 @@ import GalleryDetails from "./components/GalleryDetails";
 import { galleryContents } from "./galleryText"; // Import the organized gallery data
 
 const Gallery = () => {
+  const monthsArray = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "Septhember",
+    "October",
+    "November",
+    "December",
+  ];
   const [activeMonth, setActiveMonth] = useState("July");
 
   const onClick = (e: React.MouseEvent<HTMLLIElement>) => {
     setActiveMonth(e.currentTarget.id);
+  };
+
+  const carouselApiRef = useRef<CarouselApi | null>(null);
+
+  const handleClick = (direction: string) => {
+    switch (direction) {
+      case "next":
+        break;
+      case "prev":
+        break;
+    }
+  };
+
+  const setCarouselApi = (api: CarouselApi | undefined) => {
+    if (!api) return;
+
+    carouselApiRef.current = api;
+    const activeIndex = monthsArray.indexOf(activeMonth);
+    api.scrollTo(activeIndex, false); // Scroll to the active month on initial load
+
+    // Update the active month when the carousel slide changes
+    api.on("select", () => {
+      const currentIndex = api.selectedScrollSnap();
+      setActiveMonth(monthsArray[currentIndex]);
+    });
   };
 
   // Get the contents for the active month
@@ -47,9 +87,9 @@ const Gallery = () => {
           {/* <Icons.maskGroup className="w-[393px] h-[197px] md:w-[1057px] md:h-[529px]" /> */}
         </div>
       </section>
-      <section className="flex max-w-[1200px] items-start gap-10 self-stretch p-6 m-auto border border-[color:var(--Purple-100,#F9F5FF)] shadow-[0px_0px_100px_0px_rgba(207,185,255,0.50)] rounded-3xl border-solid bg-white">
-        <div className="flex flex-col">
-          <div className="w-32 ml-10 mb-3">
+      <section className="flex max-w-[1200px] items-start gap-10 self-stretch p-6 m-auto border border-[color:var(--Purple-100,#F9F5FF)] shadow-[0px_0px_100px_0px_rgba(207,185,255,0.50)] rounded-3xl border-solid bg-white smc:flex-col ">
+        <div className="flex smc:w-full flex-col relative smc:justify-center smc:items-center">
+          <div className="w-32 ml-10 smc:ml-0 mb-3 ">
             <Carousel>
               <CarouselContent>
                 {yearsPick.map((year) => (
@@ -65,7 +105,33 @@ const Gallery = () => {
               <CarouselNext />
             </Carousel>
           </div>
-          <div className="flex items-center justify-center">
+
+          <div className="w-32 mt-1 ml-10 smc:ml-0 mb-3 hidden smc:block">
+            <Carousel setApi={setCarouselApi}>
+              <CarouselContent>
+                {monthsPick.map((month) => (
+                  <CarouselItem
+                    className="flex items-center justify-center"
+                    key={month.month}
+                  >
+                    <li
+                      className={`list-none cursor-pointer ${
+                        activeMonth === month.month ? "font-bold" : ""
+                      }`}
+                      onClick={onClick}
+                      id={month.month}
+                    >
+                      {month.month}
+                    </li>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+
+          <div className="flex smc:hidden">
             <ScrollArea className="h-[300px] px-16">
               {monthsPick.map((month) => (
                 <li
@@ -85,7 +151,7 @@ const Gallery = () => {
           </div>
         </div>
         {/* Render the filtered content based on active month */}
-        <div className="flex-col">
+        <div className="flex-col w-full">
           <div className="h-[35px] w-[100%] flex-col justify-start items-start gap-1 inline-flex">
             <div className="px-2 justify-center items-center gap-2.5 inline-flex">
               <div className="text-center text-black/50 text-2xl font-medium">

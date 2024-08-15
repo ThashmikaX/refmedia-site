@@ -22,6 +22,7 @@ const GalleryDetails = ({
           {title}
         </div>
         <div className="text-black/90 text-[13px] font-light ">{date}</div>
+
         <div className="self-stretch text-justify text-black/90 text-[13px] font-light ">
           {description}
         </div>
@@ -78,7 +79,7 @@ const GalleryDetails = ({
           <div className="self-stretch grow shrink basis-0 px-4 bg-black/60 flex-col justify-center items-center gap-1 flex py-20 lgc:py-10 smc:py-5  relative">
             <Image
               className="self-stretch object-cover grow shrink basis-0 absolute top-0 left-0 w-screen h-full opacity-15"
-              src={images[3]}
+              src={images[4]}
               alt="event image"
               width={1000}
               height={1000}
