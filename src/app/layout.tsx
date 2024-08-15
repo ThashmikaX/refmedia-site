@@ -6,6 +6,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/react";
+
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -44,6 +46,7 @@ export default function RootLayout({
         <div className="flex flex-col min-h-[100dvh]">
           <Navbar />
           {children}
+          <Analytics />
           <Footer />
         </div>
         <Toaster
