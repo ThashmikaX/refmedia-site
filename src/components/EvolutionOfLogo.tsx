@@ -16,7 +16,7 @@ export default function EvolutionOfLogo() {
           logo has changed over the years:
         </p>
       </div>
-      <div className="mx-auto md:mx-0 flex flex-col gap-[32px]  md:flex-row md:justify-between">
+      <div className="mx-auto md:mx-0 flex flex-raw gap-[32px]  md:flex-row md:justify-between">
         {evolutionOfLogos.map((logo) => (
           <Logo
             imgSrc={logo.imgSrc}
