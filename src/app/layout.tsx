@@ -5,7 +5,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
+import { Toaster } from "react-hot-toast";
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -46,6 +46,14 @@ export default function RootLayout({
           {children}
           <Footer />
         </div>
+        <Toaster
+          toastOptions={{
+            style: {
+              padding: "20px",
+            },
+          }}
+          position="top-right"
+        />
       </body>
     </html>
   );
