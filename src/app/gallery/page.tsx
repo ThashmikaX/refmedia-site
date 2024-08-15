@@ -1,9 +1,8 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
 import CustomBreadcrums from "@/components/CustomBreadcrums";
 import React, { useState } from "react";
-import ContactUs from "@/components/ContactUs";
+
 import { Icons } from "@/components/ui/Icons";
 import {
   Carousel,
@@ -14,15 +13,21 @@ import {
 } from "@/components/ui/carousel";
 import { yearsPick, monthsPick } from "./datePicker";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import GalleryDetails from "./components/GalleryDetails";
+import { galleryContents } from "./galleryText"; // Import the organized gallery data
 
 const Gallery = () => {
   const [activeMonth, setActiveMonth] = useState("July");
 
-  const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onClick = (e: React.MouseEvent<HTMLLIElement>) => {
     setActiveMonth(e.currentTarget.id);
   };
+
+  // Get the contents for the active month
+  const filteredContent = galleryContents[activeMonth] || [];
+
   return (
-    <main className="relative text-supportingText min-h-screen w-full px-[16px] mx-auto md:mx-0">
+    <main className="relative text-supportingText min-h-screen w-full px-[16px] mx-auto md:mx-0 mt-20">
       <div className="hidden md:block absolute z-[-400] top-[80px]">
         <Icons.lineVector1 />
       </div>
@@ -71,7 +76,7 @@ const Gallery = () => {
                   }`}
                   key={month.month}
                   id={month.month}
-                  // onClick={onClick}
+                  onClick={onClick}
                 >
                   {month.month}
                 </li>
@@ -79,79 +84,26 @@ const Gallery = () => {
             </ScrollArea>
           </div>
         </div>
-        <div className="flex-1 flex flex-col">
+        {/* Render the filtered content based on active month */}
+        <div className="flex-col">
           <div className="h-[35px] w-[100%] flex-col justify-start items-start gap-1 inline-flex">
             <div className="px-2 justify-center items-center gap-2.5 inline-flex">
               <div className="text-center text-black/50 text-2xl font-medium">
                 {activeMonth}
               </div>
             </div>
-            <div className="h-px w-[100%] px-[9px] justify-center items-center inline-flex">
+            <div className="h-px w-[100%] px-[9px]inline-flex">
               <div className="w-[100%] h-px bg-black/10" />
             </div>
           </div>
-          <div className="pt-10 flex-col justify-start items-start inline-flex gap-5">
-            <div className="self-stretch text-black/90 text-xl font-medium ">
-              THREE LANKA Project - Pre Closure Meeting and Conference
-            </div>
-            <div className="text-black/90 text-[13px] font-light ">
-              16th July 2024
-            </div>
-            <div className="self-stretch text-justify text-black/90 text-[13px] font-light ">
-              Participants reflected on their journey through significant events
-              and milestones, from international partnership meetings to
-              technical seminars. This EU Erasmus+ funded initiative has been
-              instrumental in developing a skilled workforce in renewable energy
-              across Sri Lanka. As the project approaches its closure, the team
-              celebrates the progress made in training and certifying
-              technicians, engineers, and project managers in solar, wind, and
-              biogas technologies. The collaboration across five universities
-              has paved the way for a sustainable future.
-            </div>
-          </div>
-          <div className=" mt-5 justify-start items-start gap-2 inline-flex">
-            <div className="text-justify text-black/90 text-[13px] font-light">
-              Photographed by:
-            </div>
-            <div className="flex flex-col">
-              <a href="#" className="text-[#6840c6] underline text-[13px]">
-                Hirun Seneviratne
-              </a>
-              <a href="#" className="text-[#6840c6] underline text-[13px]">
-                Chamika Rohan
-              </a>
-            </div>
-          </div>
 
-          <div className="p-0.5 rounded-sm border-4 border-[#f4ebff] justify-start items-start gap-0.5 inline-flex">
-            <div className="grow shrink basis-0 self-stretch flex-col justify-center items-center gap-0.5 inline-flex">
-              <img
-                className="self-stretch object-cover grow shrink basis-0"
-                src="/assets/galleryPage/july1.jpeg"
-              />
-              <img
-                className="object-cover self-stretch grow shrink basis-0"
-                src="/assets/galleryPage/july3.jpeg"
-              />
-            </div>
-            <div className="grow shrink basis-0 self-stretch flex-col justify-center items-center gap-0.5 inline-flex">
-              <img
-                className="object-cover self-stretch grow shrink basis-0"
-                src="/assets/galleryPage/july2.jpeg"
-              />
-              <img
-                className="object-cover self-stretch grow shrink basis-0"
-                src="/assets/galleryPage/july4.jpeg"
-              />
-              <div className="self-stretch grow shrink basis-0 px-4 bg-black/60 flex-col justify-center items-center gap-1 flex bg-[url('/assets/galleryPage/july4.jpeg')]">
-                <div className="self-stretch p-2 bg-black/25 rounded-lg border border-[#f4ebff] backdrop-blur-[10px] justify-center items-center gap-2 inline-flex">
-                  <div className="grow shrink basis-0 text-center text-white/90 text-base font-semibold ">
-                    View Full Album on Facebook
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {filteredContent.map((contents, index) => (
+            <GalleryDetails
+              contents={contents}
+              key={index}
+              activeMonth={activeMonth}
+            />
+          ))}
         </div>
       </section>
     </main>

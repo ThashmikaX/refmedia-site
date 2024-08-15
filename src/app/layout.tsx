@@ -5,6 +5,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Analytics } from '@vercel/analytics/react';
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -33,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <link
           href="https://api.fontshare.com/v2/css?f[]=clash-display@500&display=swap"
@@ -44,6 +45,7 @@ export default function RootLayout({
         <div className="flex flex-col min-h-[100dvh]">
           <Navbar />
           {children}
+          <Analytics />
           <Footer />
         </div>
       </body>
