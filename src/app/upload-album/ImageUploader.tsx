@@ -1,14 +1,15 @@
 "use client";
-import Button from "@/components/ui/button";
-import {
-  CldUploadWidget,
-  CloudinaryUploadWidgetResults,
-} from "next-cloudinary";
-import { Dispatch, SetStateAction, useState } from "react";
+
+import { CldUploadWidget } from "next-cloudinary";
+import { Dispatch, SetStateAction } from "react";
 
 type Props = {
   setImages: Dispatch<SetStateAction<string[] | undefined>>;
   images: string[] | undefined;
+};
+
+type Info = {
+  secure_url: string;
 };
 
 export default function ImageUpload({ images, setImages }: Props) {
@@ -19,8 +20,8 @@ export default function ImageUpload({ images, setImages }: Props) {
       onSuccess={(result, { widget }) => {
         setImages((prev) => {
           if (prev) {
-            return [...prev, result.info.secure_url];
-          } else return [result.info.secure_url];
+            return [...prev, (result?.info as Info).secure_url];
+          } else return [(result?.info as Info).secure_url];
         });
       }}
     >
