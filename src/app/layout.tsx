@@ -5,7 +5,8 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Analytics } from '@vercel/analytics/react';
+import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/react";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -48,6 +49,14 @@ export default function RootLayout({
           <Analytics />
           <Footer />
         </div>
+        <Toaster
+          toastOptions={{
+            style: {
+              padding: "20px",
+            },
+          }}
+          position="top-right"
+        />
       </body>
     </html>
   );

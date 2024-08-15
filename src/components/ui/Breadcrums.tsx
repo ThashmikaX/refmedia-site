@@ -16,7 +16,7 @@ Breadcrumb.displayName = "Breadcrumb";
 const BreadcrumbList = React.forwardRef<
   HTMLOListElement,
   React.ComponentPropsWithoutRef<"ol">
->(({ className, ...props }, ref) => (
+>(({ className, children, ...props }, ref) => (
   <ol
     ref={ref}
     className={cn(
@@ -24,7 +24,11 @@ const BreadcrumbList = React.forwardRef<
       className
     )}
     {...props}
-  />
+  >
+    {React.Children.map(children, (child, index) =>
+      React.isValidElement(child) ? React.cloneElement(child, { key: index }) : child
+    )}
+  </ol>
 ));
 BreadcrumbList.displayName = "BreadcrumbList";
 
