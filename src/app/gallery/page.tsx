@@ -32,7 +32,7 @@ const Gallery = () => {
     "November",
     "December",
   ];
-  const [activeMonth, setActiveMonth] = useState("July");
+  const [activeMonth, setActiveMonth] = useState("June");
 
   const onClick = (e: React.MouseEvent<HTMLLIElement>) => {
     setActiveMonth(e.currentTarget.id);
