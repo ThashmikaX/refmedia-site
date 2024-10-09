@@ -58,6 +58,7 @@ export default function UploadAlbumForm() {
       return;
     }
     const validData = { ...data, imageLinks, photographers };
+    console.log(validData);
     const response = await uploadAlbumAction(validData);
     if (response) {
       if (response.status === "success") {
@@ -115,6 +116,7 @@ export default function UploadAlbumForm() {
                   Event Date
                 </div>
                 <input
+                  type="date"
                   {...register("eventDate")}
                   className="form-input"
                 ></input>

@@ -7,6 +7,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/react";
+import AuthContextProvider from "@/context/auth-context-provider";
+import QueryContextProvider from "@/context/query-context-provider";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -43,20 +45,24 @@ export default function RootLayout({
         ></link>
       </head>
       <body className={outfit.className}>
-        <div className="flex flex-col min-h-[100dvh]">
-          <Navbar />
-          {children}
-          <Analytics />
-          <Footer />
-        </div>
-        <Toaster
-          toastOptions={{
-            style: {
-              padding: "20px",
-            },
-          }}
-          position="top-right"
-        />
+        <QueryContextProvider>
+          <AuthContextProvider>
+            <div className="flex flex-col min-h-[100dvh]">
+              <Navbar />
+              {children}
+              <Analytics />
+              <Footer />
+            </div>
+            <Toaster
+              toastOptions={{
+                style: {
+                  padding: "20px",
+                },
+              }}
+              position="top-right"
+            />
+          </AuthContextProvider>
+        </QueryContextProvider>
       </body>
     </html>
   );

@@ -133,11 +133,7 @@ function Navbar() {
                             : `/#${item.href}`
                         );
                       }
-                      if (item.label == "Gallery") {
-                        window.location.href = "/gallery";
-                      } else {
-                        scrolltoHash(item.href);
-                      }
+
                       setActiveLink(item.label);
                     }}
                   >

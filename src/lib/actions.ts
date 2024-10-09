@@ -1,129 +1,88 @@
 "use server";
-import User from "./models/user";
-import Album from "./models/album";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import { connectToDatabase } from "./mongoDB";
 import { LoginInputs, SignUpInputs, Status, UploadAlbum } from "./types";
-import { cookies } from "next/headers";
+import { axiosPublic } from "./axios";
+import { isAxiosError } from "axios";
 
 export const signUpAction = async (data: SignUpInputs) => {
-  await connectToDatabase();
   try {
-    const { username, email, password } = data;
-
-    if (!username || !email || !password) {
-      throw new Error("All fields are required");
-    }
-
-    if (await User.findOne({ email: email })) {
-      throw new Error("Email is already in use");
-    }
-    if (await User.findOne({ username: username })) {
-      throw new Error("Username is already in use");
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 12);
-
-    const user = new User({ username, email, hashedPassword });
-    const newUser = await user.save();
-    if (newUser) {
+    const response = await axiosPublic.post("/auth/register", data);
+    return {
+      status: "success",
+      data: response.data,
+      message: response.status === 201 && "Successfully registered.",
+    } as Status;
+  } catch (error) {
+    if (isAxiosError(error)) {
       return {
-        status: "success",
-        message: "Successfully signed up.Log in again",
-        data: newUser.username,
+        status: "error",
+        message: error.response?.data.message,
       } as Status;
     }
-  } catch (error: any) {
-    return { status: "error", message: error.message } as Status;
   }
 };
 
 export const signInAction = async (data: LoginInputs) => {
-  await connectToDatabase();
   try {
-    const { username, password } = data;
-
-    if (!username || !password) {
-      throw new Error("All fields are required");
-    }
-    const isUserExists = await User.findOne({ username: username });
-
-    if (!isUserExists) {
-      throw new Error("Invalid username");
-    }
-
-    const isPasswordCorrect =
-      isUserExists &&
-      (await bcrypt.compare(password, isUserExists.hashedPassword));
-
-    if (!isPasswordCorrect) {
-      throw new Error("Invalid password");
-    }
-
-    if (isUserExists && isPasswordCorrect) {
-      const token = jwt.sign(
-        {
-          id: isUserExists._id,
-          username: isUserExists.username,
-          email: isUserExists.email,
-        },
-        process.env.JWT_SECRET || "12345678",
-        { expiresIn: "5h" }
-      );
-
-      const cookieStore = cookies();
-      cookieStore.set("authToken", token, {
-        httpOnly: true,
-        secure: true,
-        maxAge: 21600,
-        path: "/upload-album",
-      });
+    const response = await axiosPublic.post("/auth/login", data);
+    return {
+      status: "success",
+      data: response.data,
+      message: response.status === 200 && "Login successful! Welcome back.",
+    } as Status;
+  } catch (error) {
+    if (isAxiosError(error)) {
       return {
-        status: "success",
-        message: `Welcome! ${isUserExists.username}`,
-        data: isUserExists.username,
+        status: "error",
+        message: error.response?.data.message,
       } as Status;
     }
-  } catch (error: any) {
-    return { status: "error", message: error.message } as Status;
   }
 };
 export const uploadAlbumAction = async (data: UploadAlbum) => {
-  await connectToDatabase();
   try {
-    const {
-      albumTitle,
-      albumDescription,
-      facebookAlbumLink,
-      imageLinks,
-      photographers,
-    } = data;
-
-    if (
-      !albumTitle ||
-      !albumDescription ||
-      !facebookAlbumLink ||
-      !imageLinks ||
-      !photographers
-    ) {
-      throw new Error("All fields are required");
-    }
-    const isAlbumExists = await Album.findOne({ albumTitle });
-
-    if (isAlbumExists) {
-      throw new Error("Album with the same title already exists");
-    }
-
-    if (!isAlbumExists) {
-      const album = new Album({ ...data });
-      const newAlbum = await album.save();
+    const response = await axiosPublic.post("/album/create", data);
+    console.log(response);
+    return {
+      status: "success",
+      data: response.data,
+      message: response.status === 201 && "Successfully created a new album.",
+    } as Status;
+  } catch (error) {
+    console.log(error);
+    if (isAxiosError(error)) {
       return {
-        status: "success",
-        message: `Successfully created album ${newAlbum.albumTitle}`,
+        status: "error",
+        message: error.response?.data.message,
       } as Status;
     }
-  } catch (error: any) {
-    return { status: "error", message: error.message } as Status;
+  }
+};
+
+export const fetchAllAlbums = async (data: {
+  year: number;
+  month: number;
+}): Promise<Status> => {
+  try {
+    const response = await axiosPublic.get(
+      `/album/get-all?year=${data.year}&month=${data.month}`
+    );
+    console.log(response);
+    return {
+      status: "success",
+      data: response.data.albums as UploadAlbum[],
+      message: response.status === 201 && "Successfully created a new album.",
+    } as Status;
+  } catch (error) {
+    console.log(error);
+    if (isAxiosError(error)) {
+      return {
+        status: "error",
+        message: error.response?.data.message,
+      } as Status;
+    }
+    return {
+      status: "error",
+      message: "An unknown error occurred",
+    };
   }
 };

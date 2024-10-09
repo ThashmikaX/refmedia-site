@@ -19,11 +19,9 @@ export default function SignInForm() {
     resolver: zodResolver(signUpSchema),
     mode: "onChange",
   });
-  console.log(errors);
+
   const onSubmit = async (data: SignUpInputs) => {
-    console.log(data);
     const response = await signUpAction(data);
-    console.log(response);
     if (response) {
       if (response.status === "success") {
         toast.success(response.message);
@@ -70,19 +68,38 @@ export default function SignInForm() {
           </div>
           <div className="self-stretch flex-col justify-start items-start gap-2 flex">
             <div className="self-stretch text-black/90 text-base font-medium font-['Outfit']">
-              Username
+              First Name
             </div>
             <div>
               <input
-                {...register("username")}
+                {...register("firstName")}
                 className={cn(
                   "w-[452px] px-2 py-4 rounded border border-black/20 justify-start items-center gap-2 inline-flex text-black/50 text-base font-light font-['Outfit']",
-                  { "border-2 border-red-500": errors["username"] }
+                  { "border-2 border-red-500": errors["firstName"] }
                 )}
               ></input>
-              {errors["username"] && (
+              {errors["firstName"] && (
                 <p className="text-red-500 text-xs">
-                  {errors["username"].message}
+                  {errors["firstName"].message}
+                </p>
+              )}
+            </div>
+          </div>
+          <div className="self-stretch flex-col justify-start items-start gap-2 flex">
+            <div className="self-stretch text-black/90 text-base font-medium font-['Outfit']">
+              Last Name
+            </div>
+            <div>
+              <input
+                {...register("lastName")}
+                className={cn(
+                  "w-[452px] px-2 py-4 rounded border border-black/20 justify-start items-center gap-2 inline-flex text-black/50 text-base font-light font-['Outfit']",
+                  { "border-2 border-red-500": errors["lastName"] }
+                )}
+              ></input>
+              {errors["lastName"] && (
+                <p className="text-red-500 text-xs">
+                  {errors["lastName"].message}
                 </p>
               )}
             </div>

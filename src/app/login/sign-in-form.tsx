@@ -5,6 +5,7 @@ import { loginSchema } from "@/lib/schemas";
 import { LoginInputs } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -19,18 +20,17 @@ export default function SignInForm() {
     resolver: zodResolver(loginSchema),
     mode: "onChange",
   });
-  console.log(errors);
   const onSubmit = async (data: LoginInputs) => {
-    console.log(data);
-    const response = await signInAction(data);
-    console.log(response);
-    if (response) {
-      if (response.status === "success") {
-        toast.success(response.message);
-        router.push("/upload-album");
-      } else {
-        toast.error(response.message);
-      }
+    const result = await signIn("credentials", {
+      redirect: false,
+      email: data.email,
+      password: data.password,
+    });
+    if (!result?.ok) {
+      toast.error("Invalid email or password");
+      return;
+    } else if (result?.ok) {
+      toast.success("Login successful");
     }
   };
   return (
@@ -51,19 +51,19 @@ export default function SignInForm() {
         <div className="self-stretch  flex-col justify-start items-start gap-4 flex">
           <div className="self-stretch flex-col justify-start items-start gap-2 flex">
             <div className="self-stretch text-black/90 text-base font-medium font-['Outfit']">
-              Username
+              Email
             </div>
             <div>
               <input
-                {...register("username")}
+                {...register("email")}
                 className={cn(
                   "w-[452px] px-2 py-4 rounded border border-black/20 justify-start items-center gap-2 inline-flex text-black/50 text-base font-light font-['Outfit']",
-                  { "border-2 border-red-500": errors["username"] }
+                  { "border-2 border-red-500": errors["email"] }
                 )}
               ></input>
-              {errors["username"] && (
+              {errors["email"] && (
                 <p className="text-red-500 text-xs">
-                  {errors["username"].message}
+                  {errors["email"].message}
                 </p>
               )}
             </div>

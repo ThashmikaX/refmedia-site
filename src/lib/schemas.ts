@@ -1,17 +1,14 @@
 import { z } from "zod";
 
 export const loginSchema = z.object({
-  email: z
-    .string()
-    .min(1, "Email is required")
-    .email("Invalid email address")
-    .optional(),
-  username: z.string().min(1, "Username is required"),
+  email: z.string().min(1, "Email is required").email("Invalid email address"),
   password: z.string().min(8, "Password is too short"),
 });
 
 export const signUpSchema = loginSchema
   .extend({
+    firstName: z.string().min(1, "First name is required"),
+    lastName: z.string().optional(),
     confirmPassword: z.string().min(8, "Password is too short"),
   })
   .refine(
