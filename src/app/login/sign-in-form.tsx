@@ -31,6 +31,7 @@ export default function SignInForm() {
       return;
     } else if (result?.ok) {
       toast.success("Login successful");
+      router.push("/upload-album");
     }
   };
   return (

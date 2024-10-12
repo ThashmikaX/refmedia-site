@@ -1,19 +1,35 @@
-import { signInAction } from "@/lib/actions";
+import { refreshAccessToken, signInAction } from "@/lib/actions";
 import { NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { JWT } from "next-auth/jwt";
+import { RefreshTokenResponse } from "./types";
 
-// async function refreshTokenHandler(
-//   refreshToken: string,
-//   token: JWT
-// ): Promise<JWT> {
-//   const response = await refreshAccessToken(refreshToken);
-//   console.log(response);
-//   if (response?.status === "success") {
-//     return { ...token, ...response.data };
-//   }
-//   return token;
-// }
+async function refreshTokenHandler(
+  refreshToken: string,
+  token: JWT
+): Promise<JWT> {
+  try {
+    const response = await refreshAccessToken(refreshToken);
+    if (response?.status === "success") {
+      console.log(token);
+      console.log(response.data);
+      const data = response.data as RefreshTokenResponse;
+      return {
+        ...token,
+        tokenInfo: {
+          accessToken: data.newAccessToken,
+          accessTokenExpiresIn: data.newAccessTokenExpiresIn,
+          refreshToken: data.newRefreshToken,
+          refreshTokenExpiresIn: data.newRefreshTokenExpiresIn,
+        },
+      };
+    }
+    throw new Error("Failed to refresh token");
+  } catch (error) {
+    console.error("Error refreshing token:", error);
+    return { ...token, error: "RefreshAccessTokenError" };
+  }
+}
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -47,21 +63,22 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, user }) {
-      console.log(token, user);
+      console.log(token);
       if (user) return { ...token, ...user };
-      return token;
-      //   const expiresIn = token.tokenInfo.accessTokenExpiresIn;
-      //   console.log(expiresIn);
-      //   const currentTime = new Date().getTime();
-      //   console.log(currentTime);
-      //   if (currentTime < expiresIn) return token;
-      //   return await refreshTokenHandler(token.refreshToken as string, token);
+      const expiresIn = new Date(
+        token.accessTokenExpiresIn as string
+      ).getTime();
+      const currentTime = new Date().getTime();
+      if (currentTime < expiresIn) return token;
+      return await refreshTokenHandler(
+        token.tokenInfo.refreshToken as string,
+        token
+      );
     },
 
     async session({ token, session }) {
       session.user = token.user;
       session.tokenInfo = token.tokenInfo;
-      console.log(session);
       return session;
     },
   },

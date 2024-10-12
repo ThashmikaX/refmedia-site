@@ -4,7 +4,7 @@ import { loginSchema, signUpSchema, uploadAlbumSchema } from "./schemas";
 export type LoginInputs = z.infer<typeof loginSchema>;
 export type UploadAlbumInputs = z.infer<typeof uploadAlbumSchema>;
 export type UploadAlbum = z.infer<typeof uploadAlbumSchema> & {
-  imageLinks: string[] | undefined;
+  images: File[] | undefined;
   photographers: string[] | undefined;
   _id?: string;
 };
@@ -14,4 +14,12 @@ export type Status = {
   status: "default" | "success" | "error";
   message: string;
   data?: object;
+};
+
+export type RefreshTokenResponse = {
+  newAccessToken: string;
+  newRefreshToken: string;
+  newAccessTokenExpiresIn: string;
+  newRefreshTokenExpiresIn: string;
+  message: string;
 };
