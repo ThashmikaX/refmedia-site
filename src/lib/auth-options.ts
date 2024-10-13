@@ -63,11 +63,12 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, user }) {
-      console.log(token);
       if (user) return { ...token, ...user };
       const expiresIn = new Date(
-        token.accessTokenExpiresIn as string
+        token.tokenInfo.accessTokenExpiresIn
       ).getTime();
+      // console.log(new Date(token.tokenInfo.accessTokenExpiresIn));
+      // console.log(new Date());
       const currentTime = new Date().getTime();
       if (currentTime < expiresIn) return token;
       return await refreshTokenHandler(

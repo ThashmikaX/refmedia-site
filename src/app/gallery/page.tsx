@@ -59,7 +59,7 @@ const Gallery = () => {
       handleYearChange(yearsPick[currentYearIndex].year);
     }
   }, [currentYearIndex, handleYearChange]);
-
+  console.log(albums);
   return (
     <main className="relative text-supportingText min-h-screen w-full px-[16px] mx-auto md:mx-0 mt-20">
       <div className="hidden md:block absolute z-[-400] top-[80px]">
