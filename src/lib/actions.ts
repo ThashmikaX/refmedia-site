@@ -38,7 +38,6 @@ export const signUpAction = async (data: SignUpInputs) => {
     return { status: "error", message: error.message } as Status;
   }
 };
-
 export const signInAction = async (data: LoginInputs) => {
   await connectToDatabase();
   try {
@@ -125,5 +124,15 @@ export const uploadAlbumAction = async (data: UploadAlbum) => {
     }
   } catch (error: any) {
     return { status: "error", message: error.message } as Status;
+  }
+};
+export const getAllAlbums = async () => {
+  try {
+    await connectToDatabase();
+    const albums = await Album.find({});
+    return albums;
+  } catch (error) {
+    console.error('Failed to fetch albums:', error);
+    throw new Error('Failed to fetch albums');
   }
 };

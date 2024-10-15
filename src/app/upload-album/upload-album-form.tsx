@@ -11,8 +11,21 @@ import ImageUpload from "./ImageUploader";
 import Image from "next/image";
 import { uploadAlbumAction } from "@/lib/actions";
 import toast from "react-hot-toast";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function UploadAlbumForm() {
+
+  const photographersList = [
+  "John Doe",
+  "Jane Smith",
+  "Mike Johnson",
+  "Emily Brown",
+  "Alex Lee",
+  // Add more photographers as needed
+  ];
+  
+  const [eventDate, setEventDate] = useState<Date | null>(new Date());
   const [imageLinks, setImageLinks] = useState<string[] | undefined>(undefined);
   const [photographers, setPhotoGraphers] = useState<string[] | undefined>(
     undefined
@@ -21,19 +34,20 @@ export default function UploadAlbumForm() {
     string | undefined
   >(undefined);
   const addPhotographers = () => {
-    setPhotoGraphers((prev) => {
-      if (prev !== undefined && currentPhotographer !== undefined) {
-        if (prev.includes(currentPhotographer)) {
-          return prev;
-        } else {
-          return [...prev, currentPhotographer];
-        }
-      } else if (currentPhotographer !== undefined) {
-        return [currentPhotographer];
+  setPhotoGraphers((prev) => {
+    if (prev !== undefined && currentPhotographer !== undefined && currentPhotographer !== "") {
+      if (prev.includes(currentPhotographer)) {
+        return prev;
+      } else {
+        return [...prev, currentPhotographer];
       }
-      return prev;
-    });
-  };
+    } else if (currentPhotographer !== undefined && currentPhotographer !== "") {
+      return [currentPhotographer];
+    }
+    return prev;
+  });
+  setCurrentPhotographer(""); // Reset selection after adding
+};
   const removePhotographer = (photographerToRemove: string) => {
     setPhotoGraphers(
       (prev) =>
@@ -45,6 +59,7 @@ export default function UploadAlbumForm() {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<UploadAlbumInputs>({
     resolver: zodResolver(uploadAlbumSchema),
   });
@@ -57,7 +72,14 @@ export default function UploadAlbumForm() {
       toast.error("You need to add at least 1 photographers");
       return;
     }
-    const validData = { ...data, imageLinks, photographers };
+    if (!eventDate) {
+    toast.error("Event date is required");
+    return;
+  }
+    
+    const formattedDate = eventDate.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
+    const validData = { ...data, eventDate: formattedDate, imageLinks, photographers };
+
     const response = await uploadAlbumAction(validData);
     if (response) {
       if (response.status === "success") {
@@ -114,15 +136,25 @@ export default function UploadAlbumForm() {
                 <div className="self-stretch text-black/90 text-base font-medium font-['Outfit']">
                   Event Date
                 </div>
-                <input
-                  {...register("eventDate")}
-                  className="form-input"
-                ></input>
-                {errors["eventDate"] && (
-                  <p className="text-sm text-red-500">
-                    {errors["eventDate"].message}
-                  </p>
-                )}
+                <DatePicker
+                  selected={eventDate}
+                  onChange={(date: Date | null) => {
+                    if (date) {
+                      setEventDate(date);
+                      setValue("eventDate", date.toISOString().split('T')[0]); // Set the value as YYYY-MM-DD
+                    } else {
+                      setEventDate(new Date()); // Set a default date or handle null case as needed
+                      setValue("eventDate", ""); // Clear the value or set a default
+                    }
+                  }}
+                  className="form-input w-full"
+                  dateFormat="yyyy-MM-dd"
+                />
+        {errors["eventDate"] && (
+          <p className="text-sm text-red-500">
+            {errors["eventDate"].message}
+          </p>
+        )}
               </div>
               <div className="self-stretch grow shrink basis-0 flex-col justify-start items-start gap-2 flex">
                 <div className="self-stretch text-black/90 text-base font-medium font-['Outfit']">
@@ -174,11 +206,18 @@ export default function UploadAlbumForm() {
                     <div className="self-stretch text-black/90 text-base font-medium font-['Outfit']">
                       Contributors
                     </div>
-                    <input
+                    <select
                       value={currentPhotographer}
                       onChange={(e) => setCurrentPhotographer(e.target.value)}
-                      className="form-input"
-                    ></input>
+                      className="form-select w-full"
+                    >
+                      <option value="">Select a photographer</option>
+                      {photographersList.map((photographer) => (
+                        <option key={photographer} value={photographer}>
+                          {photographer}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                   <button
                     onClick={() => addPhotographers()}
