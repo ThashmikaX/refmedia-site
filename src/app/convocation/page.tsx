@@ -67,7 +67,9 @@ const Convocation = () => {
         "Limited slots available, secure your spot today."
       </div>
       <div className="flex items-center justify-center my-10">
-        <Button Icon={Calender}>Book Now</Button>
+        <Button asLink={true} to={"/convocation/book-now"} Icon={Calender}>
+          Book Now
+        </Button>
       </div>
     </main>
   );
