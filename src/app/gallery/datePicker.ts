@@ -1,10 +1,4 @@
-export const yearsPick = [
-  { year: 2020, active: false },
-  { year: 2021, active: false },
-  { year: 2022, active: false },
-  { year: 2023, active: false },
-  { year: 2024, active: false },
-];
+export const yearsPick = [{ year: 2024, active: true }];
 
 export const monthsPick = [
   { month: "January", monthNo: 1, active: false },

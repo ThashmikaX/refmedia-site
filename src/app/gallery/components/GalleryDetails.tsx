@@ -1,5 +1,4 @@
 import React from "react";
-import { yearsPick, monthsPick } from "../datePicker";
 import { GalleryContent } from "../galleryText";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,7 +25,9 @@ const GalleryDetails = ({
         <div className="self-stretch text-black/90 text-xl font-medium ">
           {albumTitle}
         </div>
-        <div className="text-black/90 text-[13px] font-light ">{eventDate}</div>
+        <div className="text-black/90 text-[13px] font-light ">
+          {new Date(eventDate).toDateString()}
+        </div>
         <div className="self-stretch text-justify text-black/90 text-[13px] font-light ">
           {albumDescription}
         </div>
