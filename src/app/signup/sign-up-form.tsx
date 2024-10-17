@@ -4,10 +4,11 @@ import FormField from "@/components/ui/form-field";
 import { PasswordInput } from "@/components/ui/password-input";
 import { signUpAction } from "@/lib/actions";
 import { signUpSchema } from "@/lib/schemas";
-import { LoginInputs, SignUpInputs } from "@/lib/types";
-import { cn } from "@/lib/utils";
+import { SignUpInputs } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -82,7 +83,7 @@ export default function SignInForm() {
             </div>
           </div>
           <div className="flex-col gap-2 flex">
-            <div className=" text-black/90 text-base font-medium font-['Outfit']">
+            <div className=" text-black/90 text-base font-medium">
               Last Name
             </div>
             <div>
@@ -118,7 +119,13 @@ export default function SignInForm() {
             />
           </div>
         </div>
-        <div className="self-stretch px-6 py-3 justify-center items-center gap-2.5 inline-flex">
+        <div className="self-stretch flex flex-col px-6 py-2 justify-center items-center gap-2.5 ">
+          <p>
+            Already registered ?{" "}
+            <Link className="hover:underline" href={"/login"}>
+              Log In from here
+            </Link>
+          </p>
           <Button type="submit">Sign Up</Button>
         </div>
       </div>

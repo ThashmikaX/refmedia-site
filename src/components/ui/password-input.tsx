@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
-import { Button2 } from "@/components/ui/button2";
+import { Button2 } from "@/components/ui/button-default";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import {
   FieldError,

@@ -4,14 +4,13 @@ import { useForm } from "react-hook-form";
 import Button from "@/components/ui/button";
 import FormField from "@/components/ui/form-field";
 import { PasswordInput } from "@/components/ui/password-input";
-import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { LoginInputs } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "@/lib/schemas";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
-
+import Link from "next/link";
 interface LoginFormInputs {
   email: string;
   password: string;
@@ -81,17 +80,15 @@ export default function LoginForm() {
               />
             </div>
           </div>
-          <div className="justify-start items-center gap-4 inline-flex mt-4">
-            <div className="text-black/90 text-base font-light">
-              Remember me
-            </div>
-            <div className="w-[51px] h-[31px] pl-0.5 pr-[22px] py-0.5 bg-black/10 rounded-[100px] justify-start items-center flex">
-              <div className="w-[27px] h-[27px] relative bg-white rounded-[100px] shadow" />
-            </div>
-          </div>
         </div>
-        <div className="self-stretch px-6 py-3 justify-center items-center gap-2.5 inline-flex">
-          <Button type="submit">Sign in</Button>
+        <div className="self-stretch flex flex-col px-6 py-2 justify-center items-center gap-2.5 ">
+          <p>
+            Don't have an account yet?{" "}
+            <Link className="hover:underline" href={"/signup"}>
+              Sign up from here
+            </Link>
+          </p>
+          <Button type="submit">Sign In</Button>
         </div>
       </div>
     </form>
