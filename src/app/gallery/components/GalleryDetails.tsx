@@ -3,6 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { UploadAlbum } from "@/lib/types";
 
+// Function to generate blur placeholder URL
+const getBlurDataURL = (src: string) => {
+  return src.replace("/upload/", "/upload/w_10,e_blur:1000/");
+};
+
 const GalleryDetails = ({
   activeMonth,
   contents,
@@ -18,7 +23,9 @@ const GalleryDetails = ({
     imageLinks,
     photographers,
   } = contents;
-  if (!imageLinks) return;
+  console.log(imageLinks);
+  if (!imageLinks) return null;
+
   return (
     <div className="flex-1 flex flex-col mb-5">
       <div className="pt-10 flex-col justify-start items-start inline-flex gap-5">

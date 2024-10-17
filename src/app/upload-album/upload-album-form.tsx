@@ -57,15 +57,6 @@ export default function UploadAlbumForm() {
     maxFiles: 5,
   });
 
-  const refresh = async () => {
-    if (session) {
-      const response = await refreshAccessToken(
-        session?.tokenInfo.refreshToken
-      );
-      toast.success(response.message);
-    }
-  };
-
   const onSubmit = async (data: UploadAlbumInputs) => {
     if (imageLinks.length < 5) {
       toast.error("You need to upload at least 5 images");
