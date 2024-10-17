@@ -11,8 +11,8 @@ async function refreshTokenHandler(
   try {
     const response = await refreshAccessToken(refreshToken);
     if (response?.status === "success") {
-      console.log(token);
-      console.log(response.data);
+      // console.log(token);
+      // console.log(response.data);
       const data = response.data as RefreshTokenResponse;
       return {
         ...token,
@@ -44,7 +44,6 @@ export const authOptions: NextAuthOptions = {
         const password = credentials?.password;
         if (!email || !password) return null;
         const response = await signInAction({ email, password });
-        console.log(response?.data);
         const user = response?.data as User;
         return user as User;
       },

@@ -17,12 +17,14 @@ import { fetchAllAlbums } from "@/lib/actions";
 import { Status, UploadAlbum } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
 import { type CarouselApi } from "@/components/ui/carousel";
+import { GridBackground } from "@/components/GridBackground";
 
 const Gallery = () => {
+  const today = new Date();
   const [activeDate, setActiveDate] = useState<{ year: number; month: number }>(
     {
-      year: 2024,
-      month: 7,
+      year: today.getFullYear(),
+      month: today.getMonth() + 1,
     }
   );
 
@@ -59,7 +61,6 @@ const Gallery = () => {
       handleYearChange(yearsPick[currentYearIndex].year);
     }
   }, [currentYearIndex, handleYearChange]);
-  console.log(albums);
   return (
     <main className="relative text-supportingText min-h-screen w-full px-[16px] mx-auto md:mx-0 mt-20">
       <div className="hidden md:block absolute z-[-400] top-[80px]">
@@ -69,18 +70,18 @@ const Gallery = () => {
         <Icons.lineVector2 />
       </div>
       <CustomBreadcrums />
-      <section className="relative m-[40px] flex flex-col justify-center items-center gap-[48px]">
-        <p className="text-[48px] font-[500]">Gallery</p>
-        <p className="text-[16px] font-[300] text-center max-w-[800px] text-sectionTitle">
-          Explore moments of excellence captured through our lens. Our gallery
-          showcases the vibrant life, cutting-edge research, and dynamic events
-          of the Engineering Faculty at the University of Ruhuna. Witness the
-          spirit of innovation and collaboration that defines our community.
-        </p>
-        <div className="absolute mx-auto bottom-0 right-0 md:bottom-[-280.5px] md:right-[191px] z-[-100]">
-          {/* <Icons.maskGroup className="w-[393px] h-[197px] md:w-[1057px] md:h-[529px]" /> */}
-        </div>
-      </section>
+      <GridBackground>
+        <section className="relative md:m-[40px] flex flex-col justify-center items-center gap-[48px]">
+          <p className=" text-[48px] font-[500]">Gallery</p>
+          <p className="text-justify text-[16px] font-[300] md:text-center max-w-[800px] text-sectionTitle">
+            Explore moments of excellence captured through our lens. Our gallery
+            showcases the vibrant life, cutting-edge research, and dynamic
+            events of the Engineering Faculty at the University of Ruhuna.
+            Witness the spirit of innovation and collaboration that defines our
+            community.
+          </p>
+        </section>
+      </GridBackground>
       <section className="flex max-w-[1200px] items-start gap-10 self-stretch p-6 m-auto border border-[color:var(--Purple-100,#F9F5FF)] shadow-[0px_0px_100px_0px_rgba(207,185,255,0.50)] rounded-3xl border-solid bg-white">
         <div className="flex flex-col">
           <div className="w-32 ml-10 mb-3">

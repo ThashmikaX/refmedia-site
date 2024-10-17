@@ -11,11 +11,10 @@ import Image from "next/image";
 import { IoMdClose } from "react-icons/io";
 import { FiUpload, FiPlus } from "react-icons/fi";
 import { useDropzone } from "react-dropzone";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 export default function UploadAlbumForm() {
   const { data: session } = useSession();
-  console.log(session);
   const [imageLinks, setImageLinks] = useState<string[]>([]);
   const [images, setImages] = useState<File[]>([]);
   const [photographers, setPhotographers] = useState<string[]>([]);
@@ -68,7 +67,6 @@ export default function UploadAlbumForm() {
   };
 
   const onSubmit = async (data: UploadAlbumInputs) => {
-    console.log(data);
     if (imageLinks.length < 5) {
       toast.error("You need to upload at least 5 images");
       return;
@@ -343,12 +341,14 @@ export default function UploadAlbumForm() {
             Create album
           </button>
           <button
-            onClick={refresh}
+            onClick={() => {
+              signOut({ callbackUrl: "/login" });
+            }}
             disabled={isSubmitting}
             type="button"
             className="px-6 py-3 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
           >
-            Refresh
+            Log Out
           </button>
         </div>
       </div>

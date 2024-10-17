@@ -1,14 +1,14 @@
 import React from "react";
-import { GalleryContent } from "../galleryText";
 import Image from "next/image";
 import Link from "next/link";
+import { UploadAlbum } from "@/lib/types";
 
 const GalleryDetails = ({
   activeMonth,
   contents,
 }: {
   activeMonth: string;
-  contents: GalleryContent;
+  contents: UploadAlbum;
 }) => {
   const {
     albumDescription,

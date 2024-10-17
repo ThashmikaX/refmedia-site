@@ -1,10 +1,13 @@
 "use client";
 import Button from "@/components/ui/button";
+import FormField from "@/components/ui/form-field";
+import { PasswordInput } from "@/components/ui/password-input";
 import { signUpAction } from "@/lib/actions";
 import { signUpSchema } from "@/lib/schemas";
 import { LoginInputs, SignUpInputs } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -25,7 +28,12 @@ export default function SignInForm() {
     if (response) {
       if (response.status === "success") {
         toast.success(response.message);
-        router.push("/login");
+        await signIn("credentials", {
+          redirect: false,
+          teamName: data.email,
+          password: data.password,
+        });
+        router.push("/upload-album");
       } else {
         toast.error(response.message);
       }
@@ -36,126 +44,82 @@ export default function SignInForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="w-full h-[1024px] p-16 bg-white justify-center items-center gap-12 inline-flex"
     >
-      <div className="w-[532px] px-10 py-12 bg-white/10 rounded-2xl shadow border-2 border-[#f4ebff] backdrop-blur-[20px] flex-col justify-start items-start gap-12 inline-flex">
-        <div className="self-stretch h-[86px] flex-col justify-start items-start gap-4 flex">
-          <div className="self-stretch text-black/90 text-2xl font-medium font-['Outfit']">
+      <div className="w-[532px] px-10 py-12 bg-white/10 rounded-2xl shadow border-2 border-[#f4ebff] backdrop-blur-[20px] flex-col  gap-12 inline-flex">
+        <div className="s h-[86px] flex-col w-full gap-4 flex">
+          <div className=" text-black/90 text-2xl font-medium ">
             Get started!
           </div>
-          <div className="self-stretch text-black/90 text-base font-light font-['Outfit']">
+          <div className=" text-black/90 text-base font-light ">
             Please sign up to get access to upload photo albums to the REF Media
             Gallery.
           </div>
         </div>
-        <div className="self-stretch  flex-col justify-start items-start gap-4 flex">
-          <div className="self-stretch flex-col justify-start items-start gap-2 flex">
-            <div className="self-stretch text-black/90 text-base font-medium font-['Outfit']">
-              Email
-            </div>
+        <div className="flex-col w-full gap-4 flex">
+          <div className="flex-col  gap-2 flex">
+            <div className="text-black/90 text-base font-medium ">Email</div>
             <div>
-              <input
-                {...register("email")}
-                className={cn(
-                  "w-[452px] px-2 py-4 rounded border border-black/20 justify-start items-center gap-2 inline-flex text-black/50 text-base font-light font-['Outfit']",
-                  { "border-2 border-red-500": errors["email"] }
-                )}
-              ></input>
-              {errors["email"] && (
-                <p className="text-red-500 text-xs">
-                  {errors["email"].message}
-                </p>
-              )}
+              <FormField
+                name="email"
+                register={register}
+                error={errors["email"]}
+                label="Email"
+                placeholder="johndoe@gmail.com"
+              />
             </div>
           </div>
-          <div className="self-stretch flex-col justify-start items-start gap-2 flex">
-            <div className="self-stretch text-black/90 text-base font-medium font-['Outfit']">
+          <div className="flex-col  gap-2 flex">
+            <div className=" text-black/90 text-base font-medium ">
               First Name
             </div>
             <div>
-              <input
-                {...register("firstName")}
-                className={cn(
-                  "w-[452px] px-2 py-4 rounded border border-black/20 justify-start items-center gap-2 inline-flex text-black/50 text-base font-light font-['Outfit']",
-                  { "border-2 border-red-500": errors["firstName"] }
-                )}
-              ></input>
-              {errors["firstName"] && (
-                <p className="text-red-500 text-xs">
-                  {errors["firstName"].message}
-                </p>
-              )}
+              <FormField
+                name="firstName"
+                register={register}
+                error={errors["firstName"]}
+                label="First Name"
+                placeholder="john"
+              />
             </div>
           </div>
-          <div className="self-stretch flex-col justify-start items-start gap-2 flex">
-            <div className="self-stretch text-black/90 text-base font-medium font-['Outfit']">
+          <div className="flex-col gap-2 flex">
+            <div className=" text-black/90 text-base font-medium font-['Outfit']">
               Last Name
             </div>
             <div>
-              <input
-                {...register("lastName")}
-                className={cn(
-                  "w-[452px] px-2 py-4 rounded border border-black/20 justify-start items-center gap-2 inline-flex text-black/50 text-base font-light font-['Outfit']",
-                  { "border-2 border-red-500": errors["lastName"] }
-                )}
-              ></input>
-              {errors["lastName"] && (
-                <p className="text-red-500 text-xs">
-                  {errors["lastName"].message}
-                </p>
-              )}
+              <FormField
+                name="lastName"
+                register={register}
+                error={errors["lastName"]}
+                label="First Name"
+                placeholder="Doe"
+              />
             </div>
           </div>
-          <div className="self-stretch h-20 flex-col justify-start items-start gap-2 flex">
-            <div className="self-stretch justify-start items-center gap-2 inline-flex">
-              <div className="grow shrink basis-0 text-black/90 text-base font-medium font-['Outfit']">
-                Password
-              </div>
-            </div>
+          <div className="w-full h-20 flex-col gap-2 flex">
             <div>
-              <input
+              <PasswordInput
                 {...register("password")}
-                className={cn(
-                  "w-[452px] px-2 py-4 rounded border border-black/20 justify-start items-center gap-2 inline-flex text-black/50 text-base font-light font-['Outfit']",
-                  { "border-2 border-red-500": errors["password"] }
-                )}
-              ></input>
-              {errors["password"] && (
-                <p className="text-red-500 text-xs">
-                  {errors["password"].message}
-                </p>
-              )}
+                name="password"
+                register={register}
+                error={errors["password"]}
+                label="Password"
+                placeholder="XXXXXXXX"
+              />
             </div>
           </div>
-          <div className="self-stretch flex-col justify-start items-start mt-4 gap-2 flex">
-            <div className="self-stretch text-black/90 text-base font-medium font-['Outfit']">
-              Confirm your password
-            </div>
-            <div>
-              <input
-                {...register("confirmPassword")}
-                className={cn(
-                  "w-[452px] px-2 py-4 rounded border border-black/20 justify-start items-center gap-2 inline-flex text-black/50 text-base font-light font-['Outfit']",
-                  { "border-2 border-red-500": errors["confirmPassword"] }
-                )}
-              ></input>
-              {errors["confirmPassword"] && (
-                <p className="text-red-500 text-xs">
-                  {errors["confirmPassword"].message}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <div className="justify-start items-center gap-4 inline-flex mt-4">
-            <div className="text-black/90 text-base font-light font-['Outfit']">
-              Remember me
-            </div>
-            <div className="w-[51px] h-[31px] pl-0.5 pr-[22px] py-0.5 bg-black/10 rounded-[100px] justify-start items-center flex">
-              <div className="w-[27px] h-[27px] relative bg-white rounded-[100px] shadow" />
-            </div>
+          <div className="self-stretch flex-col mt-4 gap-2 flex">
+            <PasswordInput
+              {...register("confirmPassword")}
+              name="confirmPassword"
+              register={register}
+              error={errors["confirmPassword"]}
+              label="Confirm Password"
+              placeholder="XXXXXXXX"
+            />
           </div>
         </div>
         <div className="self-stretch px-6 py-3 justify-center items-center gap-2.5 inline-flex">
-          <Button type="submit">Sign in</Button>
+          <Button type="submit">Sign Up</Button>
         </div>
       </div>
     </form>

@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 type NavItem = {
   label: string;
@@ -103,23 +105,22 @@ function Navbar() {
         <div className=" relative lg:text-[16px] w-full">
           <div className="py-4 px-4 md:px-16 md:py-3 flex justify-between items-center">
             <div className="flex items-center flex-shrink-0">
-              <a href="/#">
+              <Link href="/#home">
                 <img
                   className={"mr-2 duration-500 h-10 md:h-[48px]"}
                   src="/assets/Logo.png"
                   alt="Logo"
                 />
-              </a>
+              </Link>
             </div>
             <ul className="hidden lg:flex ml-14 space-x-12 text-white">
               {navItems.map((item, index) => (
                 <li
                   key={index}
-                  className={
-                    activeLink == item.label
-                      ? "bg-text-gradient text-[#fef837] bg-clip-text"
-                      : undefined
-                  }
+                  className={cn("focus:text-[#fef837]", {
+                    "bg-text-gradient text-[#fef837] bg-clip-text":
+                      activeLink === item.label,
+                  })}
                 >
                   <div
                     className="hover:cursor-pointer nav-link"

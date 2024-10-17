@@ -1,16 +1,23 @@
 "use client";
-import Button from "@/components/ui/button";
-import { signInAction } from "@/lib/actions";
-import { loginSchema } from "@/lib/schemas";
-import { LoginInputs } from "@/lib/types";
-import { cn } from "@/lib/utils";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import React from "react";
 import { useForm } from "react-hook-form";
+import Button from "@/components/ui/button";
+import FormField from "@/components/ui/form-field";
+import { PasswordInput } from "@/components/ui/password-input";
+import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
+import { LoginInputs } from "@/lib/types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema } from "@/lib/schemas";
+import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 
-export default function SignInForm() {
+interface LoginFormInputs {
+  email: string;
+  password: string;
+}
+
+export default function LoginForm() {
   const router = useRouter();
   const {
     register,
@@ -39,59 +46,43 @@ export default function SignInForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="w-full h-[1024px] p-16 bg-white justify-center items-center gap-12 inline-flex"
     >
-      <div className="w-[532px] px-10 py-12 bg-white/10 rounded-2xl shadow border-2 border-[#f4ebff] backdrop-blur-[20px] flex-col justify-start items-start gap-12 inline-flex">
-        <div className="self-stretch h-[86px] flex-col justify-start items-start gap-4 flex">
-          <div className="self-stretch text-black/90 text-2xl font-medium font-['Outfit']">
+      <div className="w-[532px] px-10 py-12 bg-white/10 rounded-2xl shadow border-2 border-[#f4ebff] backdrop-blur-[20px] flex-col gap-12 inline-flex">
+        <div className="h-[86px] flex-col w-full gap-4 flex">
+          <div className="text-black/90 text-2xl font-medium">
             Welcome back!
           </div>
-          <div className="self-stretch text-black/90 text-base font-light font-['Outfit']">
+          <div className="text-black/90 text-base font-light">
             Please log in to manage and upload photo albums to the REF Media
             Gallery.
           </div>
         </div>
-        <div className="self-stretch  flex-col justify-start items-start gap-4 flex">
-          <div className="self-stretch flex-col justify-start items-start gap-2 flex">
-            <div className="self-stretch text-black/90 text-base font-medium font-['Outfit']">
-              Email
-            </div>
+        <div className="flex-col w-full gap-4 flex">
+          <div className="flex-col gap-2 flex">
+            <div className="text-black/90 text-base font-medium">Email</div>
             <div>
-              <input
-                {...register("email")}
-                className={cn(
-                  "w-[452px] px-2 py-4 rounded border border-black/20 justify-start items-center gap-2 inline-flex text-black/50 text-base font-light font-['Outfit']",
-                  { "border-2 border-red-500": errors["email"] }
-                )}
-              ></input>
-              {errors["email"] && (
-                <p className="text-red-500 text-xs">
-                  {errors["email"].message}
-                </p>
-              )}
+              <FormField
+                name="email"
+                register={register}
+                error={errors["email"]}
+                label="Email"
+                placeholder="johndoe@gmail.com"
+              />
             </div>
           </div>
-          <div className="self-stretch h-20 flex-col justify-start items-start gap-2 flex">
-            <div className="self-stretch justify-start items-center gap-2 inline-flex">
-              <div className="grow shrink basis-0 text-black/90 text-base font-medium font-['Outfit']">
-                Password
-              </div>
-            </div>
+          <div className="w-full h-20 flex-col gap-2 flex">
             <div>
-              <input
+              <PasswordInput
                 {...register("password")}
-                className={cn(
-                  "w-[452px] px-2 py-4 rounded border border-black/20 justify-start items-center gap-2 inline-flex text-black/50 text-base font-light font-['Outfit']",
-                  { "border-2 border-red-500": errors["password"] }
-                )}
-              ></input>
-              {errors["password"] && (
-                <p className="text-red-500 text-xs">
-                  {errors["password"].message}
-                </p>
-              )}
+                name="password"
+                register={register}
+                error={errors["password"]}
+                label="Password"
+                placeholder="XXXXXXXX"
+              />
             </div>
           </div>
           <div className="justify-start items-center gap-4 inline-flex mt-4">
-            <div className="text-black/90 text-base font-light font-['Outfit']">
+            <div className="text-black/90 text-base font-light">
               Remember me
             </div>
             <div className="w-[51px] h-[31px] pl-0.5 pr-[22px] py-0.5 bg-black/10 rounded-[100px] justify-start items-center flex">
