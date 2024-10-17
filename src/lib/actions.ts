@@ -72,31 +72,37 @@ export const refreshAccessToken = async (refreshToken: string) => {
   }
 };
 
-export const uploadAlbumAction = async (formData: FormData) => {
+export const uploadAlbumAction = async (
+  formData: FormData
+): Promise<Status> => {
   const session = await getServerSession(authOptions);
 
   try {
-    // Send the formData via Axios
     const response = await axiosPublic.post("/album/create", formData, {
       headers: {
         Cookie: `accessToken=${session?.tokenInfo.accessToken}; refreshToken=${session?.tokenInfo.refreshToken}`,
-        "Content-Type": "multipart/form-data", // Important for file uploads
+        "Content-Type": "multipart/form-data",
       },
     });
+
+    if (response.status !== 201) {
+      throw new Error("Failed to create album");
+    }
 
     return {
       status: "success",
       data: response.data,
-      message: response.status === 201 && "Successfully created a new album.",
-    } as Status;
+      message: "Successfully created a new album.",
+    };
   } catch (error) {
     console.error(error);
     if (isAxiosError(error)) {
-      return {
-        status: "error",
-        message: error.response?.data.message,
-      } as Status;
+      throw new Error(
+        error.response?.data.message ||
+          "An error occurred while uploading the album"
+      );
     }
+    throw new Error("An unexpected error occurred");
   }
 };
 
@@ -108,14 +114,12 @@ export const fetchAllAlbums = async (data: {
     const response = await axiosPublic.get(
       `/album/get-all?year=${data.year}&month=${data.month}`
     );
-    console.log(response);
     return {
       status: "success",
       data: response.data.albums as UploadAlbum[],
       message: response.status === 201 && "Successfully created a new album.",
     } as Status;
   } catch (error) {
-    console.log(error);
     if (isAxiosError(error)) {
       return {
         status: "error",

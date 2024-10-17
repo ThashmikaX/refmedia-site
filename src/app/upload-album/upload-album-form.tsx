@@ -85,14 +85,13 @@ export default function UploadAlbumForm() {
         formData.append("images", file); // Each image is appended with key 'images'
       });
     }
-    const response = await uploadAlbumAction(formData);
-    if (response) {
-      if (response.status === "success") {
-        toast.success(response.message);
-      } else {
-        toast.error(response.message);
-      }
-    }
+    const promise = uploadAlbumAction(formData);
+    toast.promise(promise, {
+      loading: "Uploading album... This may take some time.",
+      success:
+        "Album successfully uploaded! You can now view it in gallery page.",
+      error: (err) => err.message,
+    });
   };
 
   return (
@@ -308,22 +307,6 @@ export default function UploadAlbumForm() {
         </div>
 
         <div className="px-6 py-4 bg-gray-50 border-t flex justify-end space-x-4">
-          <button
-            onClick={() => {
-              reset({
-                albumDescription: "",
-                albumTitle: "",
-                eventDate: "",
-                facebookAlbumLink: "",
-              });
-              setImageLinks([]);
-              setPhotographers([]);
-            }}
-            type="button"
-            className="px-6 py-3 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
-          >
-            Discard
-          </button>
           <button
             disabled={isSubmitting}
             type="submit"
